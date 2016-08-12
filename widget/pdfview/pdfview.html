@@ -1,0 +1,25 @@
+
+#xscript()
+iNet.prefix = "$ctx.site.prefix";
+iNet.extension = "$ctx.extension()";
+iNet.path = "$ctx.path()";
+iNet.pattern = "$ctx.pattern";
+iNet.serverDate = new Date();
+#end
+#docXUI({
+"type":"docx-view-form",
+"namespace":"viewer",
+"id":"idoc"
+})
+<script type="text/javascript">
+   $(function(){
+       var docxView = new iNet.ui.viewer.iViewer(
+               {
+                   docID: "$ctx.value('uuid')",
+                   isFullScreen: false
+               }
+       );
+        docxView.open();
+   });
+
+</script>

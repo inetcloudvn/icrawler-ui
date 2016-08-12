@@ -1,0 +1,78 @@
+#theme("/icrawler/css/jquery/jquery.select2")
+
+#script("/js/common/inet/lib/select.min.js")
+#script("/js/common/inet/lib/grid-2.0.min.js")
+#script("/js/icrawler/inet/lib/icrawler-admin-alias.min.js")
+
+#dataservice("icwl_nodes_findunitanddeptservice")
+#variable("treeType", "alias")
+#set($units = $icwl_nodes_findunitanddeptservice)
+#xscript()
+ var dataUnits = [];
+ #foreach($item in $units.elements)
+ dataUnits.push({id: "$item.uuid",name:"$item.name",type:"$item.type",parent:"$item.pid",order:"$item.order"});
+ #end
+#end
+
+<div id="wg-toolbar" class="navbar-fixed-top">
+  <button id="alias-btn-create" class="btn btn-primary btn-small">
+    <i class="icon-plus"></i> $text.getText("icrawler.common.button.create")
+  </button>
+  <button id="alias-btn-save" class="btn btn-primary btn-small">
+    <i class="icon-save"></i> $text.getText("icrawler.common.button.save")
+  </button>
+  <!--<button id="alias-btn-refesh" class="btn btn-primary btn-small">
+    <i class="icon-refresh"></i> $text.getText("icrawler.common.button.refresh")
+  </button>-->
+</div>
+<div id="wg-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div id="wg-content-top" class="form-horizontal">
+        <div class="form-group">
+          <div class="col-sm-6">
+            <label class="ilabel col-sm-3 control-label" for="alias-cb-unit">$text.getText("icrawler.admin.alias.unit")  (<span class="required" />):</label>
+            <div class="col-sm-9" id="alias-div-unit">
+              <select id="alias-cb-unit" class="width-100"></select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-6">
+            <label class="ilabel col-sm-3 control-label" for="alias-txt-represent">$text.getText("icrawler.admin.alias.alias")  (<span class="required" />):</label>
+            <div class="col-sm-9" ><input type="text" id="alias-txt-represent" class="col-sm-12" maxlength="128"/></div>
+          </div>
+          <div class="col-sm-6">
+            <label class="ilabel col-sm-3 control-label" for="alias-cb-rank">$text.getText("icrawler.admin.alias.rank")  (<span class="required" />):</label>
+            <div class="col-sm-9"><select id="alias-cb-rank" class="form-control">
+              <option value="administrator" selected="selected">$text.getText("icrawler.admin.alias.rank_administrator")</option>
+              <option value="dept_administrator">$text.getText("icrawler.admin.alias.rank_dept_administrator")</option>
+              <option value="org_administrator">$text.getText("icrawler.common.dialog-alias.org_administrator")</option>
+              <option value="org_leader">$text.getText("icrawler.admin.alias.rank_org_leader")</option>
+              <option value="unit_leader">$text.getText("icrawler.admin.alias.rank_unit_leader")</option>
+              <option value="leader">$text.getText("icrawler.admin.alias.rank_leader")</option>
+              <option value="specialist">$text.getText("icrawler.admin.alias.rank_specialist")</option>
+            </select></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-6">
+            <label class="ilabel col-sm-3 control-label" for="alias-txt-name">$text.getText("icrawler.admin.alias.fullname") (<span class="required" />):</label>
+            <div class="col-sm-9">
+              <span class="input-icon input-icon-right" style="width: 100%;">
+                <input type="text" id="alias-txt-name" class="form-control" disabled="disabled" /><i id="alias-btn-select-user" class="ace-icon fa select-icon fa-user"></i>
+              </span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label class="ilabel col-sm-3 control-label" for="alias-txt-account">$text.getText("icrawler.admin.alias.account") (<span class="required" />):</label>
+            <div class="col-sm-9">
+              <input type="text" id="alias-txt-account" disabled="disabled" readonly="readonly" class="form-control" maxlength="128"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="alias-grid-id"></div>
+    </div>
+  </div>
+</div>

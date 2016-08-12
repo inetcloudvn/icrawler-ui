@@ -1,0 +1,30 @@
+<a id="imenu-toggler" href="javascript:;"><span></span></a>
+<div id="sidebar" class="fixed">
+   <div id="sidebar-shortcuts">
+    </div>
+    <ul class="nav nav-list">
+      <li id="home-paperwork">
+        <a href="$ctx.page('icrawler/page/index')"> <i class="icon-home"></i> <span>$text.getText("Trang chủ")</span></a>
+      </li>
+      <li class="active open">
+        <a href="javascript:;"> <i class="icon-cogs"></i> <span>$text.getText("icrawler.admin.menu.data_management")</span> <b class="arrow icon-angle-down"></b></a>
+        <ul class="submenu">
+                <!--<li id="admin-menu-node" onclick="javascript:;"><a href='javascript:;'  data-url="$ctx.page('icrawler/page/admin/node')"><i class="icon-double-angle-right"></i> <span>$text.getText("icrawler.admin.menu.organize_users")</span></a></li>
+                <li id="admin-menu-alias" onclick="javascript:;"><a href='javascript:;'  data-url="$ctx.page('icrawler/page/admin/alias')"><i class="icon-double-angle-right"></i> <span>$text.getText("icrawler.admin.menu.manage_alias")</span></a></li>-->
+                <li id="admin-menu-config" onclick="javascript:;"><a href='javascript:;' data-url="$ctx.page('icrawler/page/admin/system-config')"><i class="icon-double-angle-right"></i> <span>$text.getText("icrawler.admin.menu.config")</span></a></li>
+                <li id="admin-menu-config-exchange" onclick="javascript:;"><a href='javascript:;' data-url="$ctx.page('icrawler/page/admin/gateway')"><i class="icon-double-angle-right"></i> <span>$text.getText("icrawler.admin.menu.gateway")</span></a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="javascript:;"> <i class="icon-book"></i> <span>$text.getText("icrawler.admin.menu.business")</span> <b class="arrow icon-angle-down"></b></a>
+        <ul class="submenu">
+                <li id="admin-menu-dict" onclick="javascript:;"><a href='javascript:;' data-url="$ctx.page('icrawler/page/admin/dictionary')"><i class="icon-double-angle-right"></i> <span>$text.getText("icrawler.admin.menu.dict")</span></a></li>
+                <li id="admin-menu-import-template" onclick="javascript:;"><a href='javascript:;'  data-url="$ctx.page('icrawler/page/admin/import')"><i class="icon-double-angle-right"></i> <span>$text.getText("icrawler.admin.menu.template")</span></a></li>
+        </ul>
+      </li>
+      #end
+    </ul>
+    <div id="sidebar-collapse">
+      <i class="icon-double-angle-left"></i>
+    </div>
+</div>

@@ -1,0 +1,5 @@
+#sidebar-collapse>[class*="icon-"] {
+    color: #FFF;
+    border: 1px solid #808080;
+    background-color: #808080 !important;
+}

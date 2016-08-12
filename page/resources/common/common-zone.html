@@ -1,0 +1,170 @@
+#zone({"inherit":true})
+
+#scriptBundle("common-script")
+  iNet.ns("iNet.resources",
+          "iNet.resources.grid",
+          "iNet.resources.PagingToolbar",
+          "iNet.resources.ajaxLoading",
+          "iNet.resources.message.button",
+          "iNet.resources.message",
+          "iNet.resources.dialog",
+          "iNet.resources.dialog.createAliasDialog",
+          "iNet.resources.dialog.selectAliasDialog",
+          "iNet.resources.dialog.selectUserDialog",
+          "iNet.resources.form.selectUser",
+          "iNet.resources.icrawler.selectUser"
+
+  );
+  
+  if (iNet.resources.grid) {
+    iNet.apply(iNet.resources.grid, {
+      beforePageText: '$text.getText("icrawler.common.grid.before_page_text")',
+      afterPageText: '$text.getText("icrawler.common.grid.after_page_text")',
+      firstText: '$text.getText("icrawler.common.grid.first_text")',
+      prevText: '$text.getText("icrawler.common.grid.prev_text")',
+      nextText: '$text.getText("icrawler.common.grid.next_text")',
+      lastText: '$text.getText("icrawler.common.grid.last_text")',
+      displayMsg: '$text.getText("icrawler.common.grid.display_msg")',
+      emptyMsg: '$text.getText("icrawler.common.grid.empty_msg")',
+      refreshText: '$text.getText("icrawler.common.grid.refresh_text")',
+      searchText: '$text.getText("icrawler.common.grid.search_text")',
+      searchPlaceholder: '$text.getText("icrawler.common.grid.search_placeholder")'
+    });
+  }
+  
+  if (iNet.resources.PagingToolbar) {
+    iNet.apply(iNet.resources.PagingToolbar, {
+      beforePageText: '$text.getText("icrawler.common.grid.before_page_text")',
+      afterPageText: '$text.getText("icrawler.common.grid.after_page_text")',
+      firstText: '$text.getText("icrawler.common.grid.first_text")',
+      prevText: '$text.getText("icrawler.common.grid.prev_text")',
+      nextText: '$text.getText("icrawler.common.grid.next_text")',
+      lastText: '$text.getText("icrawler.common.grid.last_text")',
+      displayMsg: '$text.getText("icrawler.common.grid.display_msg")',
+      emptyMsg: '$text.getText("icrawler.common.grid.empty_msg")',
+      refreshText: '$text.getText("icrawler.common.grid.refresh_text")',
+      searchText: '$text.getText("icrawler.common.grid.search_text")',
+      searchPlaceholder: '$text.getText("icrawler.common.grid.search_placeholder")'
+    });
+  }
+  
+  if (iNet.resources.ajaxLoading) {
+    iNet.apply(iNet.resources.ajaxLoading, {
+      loading: '$text.getText("icrawler.common.ajax-loading.loading")',
+      saving: '$text.getText("icrawler.common.ajax-loading.saving")',
+      deleting: '$text.getText("icrawler.common.ajax-loading.deleting")',
+      acting:'$text.getText("icrawler.common.ajax-loading.acting")'
+    });
+  }
+  
+  if (iNet.resources.message.button) {
+    iNet.apply(iNet.resources.message.button, {
+      save: '$text.getText("icrawler.common.button.save")',
+      update: '$text.getText("icrawler.common.button.update")',
+      create: '$text.getText("icrawler.common.button.create")',
+      close: '$text.getText("icrawler.common.button.close")',
+      ok: '$text.getText("icrawler.common.button.ok")',
+      cancel: '$text.getText("icrawler.common.button.cancel")',
+      edit: '$text.getText("icrawler.common.button.edit")',
+      lock: '$text.getText("icrawler.common.button.lock")',
+      unlock: '$text.getText("icrawler.common.button.unlock")',
+      del: '$text.getText("icrawler.common.button.delete")',
+      test: '$text.getText("icrawler.common.button.test")',
+      exit: '$text.getText("icrawler.common.button.exit")',
+      approve:'$text.getText("icrawler.common.button.approve")',
+      reject:'$text.getText("icrawler.common.button.reject")',
+      download:'$text.getText("icrawler.common.button.download")',
+      view:'$text.getText("icrawler.common.button.view")'
+    });
+  }
+  
+  if (iNet.resources.message) {
+    iNet.apply(iNet.resources.message, {
+      confirm_update:'$text.getText("icrawler.common.message.confirm_update")',
+      dialog_confirm_title: '$text.getText("icrawler.common.message.dialog_confirm_title")',
+      dialog_confirm_content: '$text.getText("icrawler.common.message.dialog_confirm_content")',
+      emptyMsg: '$text.getText("icrawler.common.message.emptyMsg")',
+      warning_title: '$text.getText("icrawler.common.message.warning_title")',
+      account_config_error: '$text.getText("icrawler.common.message.account_config_error")',
+      change_role_confirm_msg: '$text.getText("icrawler.common.change_role_confirm_msg")',
+      ed_title: '$text.getText("icrawler.common.ed_title")',
+      record_title: '$text.getText("icrawler.common.record_title")',
+      remind_title: '$text.getText("icrawler.common.remind_title")',
+      card_title: '$text.getText("icrawler.common.card_title")',
+      no_direction: '$text.getText("icrawler.common.no_direction")',
+      task_completed: '$text.getText("icrawler.common.task_completed")'
+    });
+  }
+  
+  if (iNet.resources.form.select) {
+    iNet.apply(iNet.resources.form.select, {
+      choose: '$text.getText("icrawler.common.form-select.choose")',
+      no_matches_found:'$text.getText("icrawler.common.form-select.no_matches_found")',
+      searching: '$text.getText("icrawler.common.form-select.searching")',
+      please_enter:'$text.getText("icrawler.common.form-select.please_enter")',
+      more_char:'$text.getText("icrawler.common.form-select.more_char")',
+      only_select:'$text.getText("icrawler.common.form-select.only_select")',
+      load_more:'$text.getText("icrawler.common.form-select.load_more")',
+      item:'$text.getText("icrawler.common.form-select.item")'
+    });
+  }
+  if (iNet.resources.form.selectUser) {
+    iNet.apply(iNet.resources.form.selectUser, {
+      allText:'$text.getText("icrawler.common.form-select-user.allText")',
+      selectedText:'$text.getText("icrawler.common.form-select-user.selected_text")',
+      search_placeholder:'$text.getText("icrawler.common.form-select-user.search_placeholder")',
+      un_selected:'$text.getText("icrawler.common.form-select-user.un_selected")',
+      select_all:'$text.getText("icrawler.common.form-select-user.select_all")',
+      dept_all_text: '$text.getText("icrawler.common.form-select-user.dept_all_text")',
+      processingText:'$text.getText("icrawler.common.form-select-user.processing_text")',
+      coordinateText:'$text.getText("icrawler.common.form-select-user.coordinate_text")',
+      watchText:'$text.getText("icrawler.common.form-select-user.watch_text")',
+      create_alias: '$text.getText("icrawler.common.form-select-user.create_alias")'
+    });
+  }
+  if (iNet.resources.dialog.createAliasDialog) {
+    iNet.apply(iNet.resources.dialog.createAliasDialog, {
+      title: '$text.getText("icrawler.common.dialog-alias.create_alias")',
+      nameText: '$text.getText("icrawler.common.dialog-alias.name_text")',
+      rankText: '$text.getText("icrawler.common.dialog-alias.rank_text")',
+      accountText: '$text.getText("icrawler.common.dialog-alias.account_text")',
+      name_required: '$text.getText("icrawler.common.dialog-alias.name_required")',
+      account_required: '$text.getText("icrawler.common.dialog-alias.account_required")',
+      administrator: '$text.getText("icrawler.common.dialog-alias.administrator")',
+      dept_administrator: '$text.getText("icrawler.common.dialog-alias.dept_administrator")',
+      org_administrator: '$text.getText("icrawler.common.dialog-alias.org_administrator")',
+      org_leader:'$text.getText("icrawler.common.dialog-alias.org_leader")',
+      unit_leader:'$text.getText("icrawler.common.dialog-alias.unit_leader")',
+      leader:'$text.getText("icrawler.common.dialog-alias.leader")',
+      specialist: '$text.getText("icrawler.common.dialog-alias.specialist")'
+    });
+  }
+
+if (iNet.resources.dialog.selectAliasDialog) {
+      iNet.apply(iNet.resources.dialog.selectAliasDialog, {
+      title: '$text.getText("icrawler.common.dialog-alias.select_alias")'
+    });
+  }
+
+  if (iNet.resources.dialog.selectUserDialog) {
+      iNet.apply(iNet.resources.dialog.selectUserDialog, {
+      title: '$text.getText("icrawler.common.dialog-alias.select_account_cloud")'
+    });
+  }
+  if (iNet.resources.icrawler.selectUser) {
+    iNet.apply(iNet.resources.icrawler.selectUser, {
+      title: '$text.getText("icrawler.common.select-user.title")',
+      place_holder: '$text.getText("icrawler.common.select-user.placeholder")',
+      select_all: '$text.getText("icrawler.common.select-user.select_all")',
+      all: '$text.getText("icrawler.common.select-user.all")',
+      group: '$text.getText("icrawler.common.select-user.group")',
+      unit_inter: '$text.getText("icrawler.common.select-user.unit_inter")',
+      unit_ext: '$text.getText("icrawler.common.select-user.unit_ext")',
+      sender: '$text.getText("icrawler.common.select-user.sender")',
+      add: '$text.getText("icrawler.common.select-user.add")',
+      change: '$text.getText("icrawler.common.select-user.change")'
+    });
+  }
+
+#end
+#end

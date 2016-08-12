@@ -1,0 +1,67 @@
+#script("::icrawler/page/resources/admin/template-zone")
+#script("/js/common/inet/lib/grid-2.0.min.js")
+#script("/js/common/inet/lib/select.min.js")
+#script("/js/icrawler/ace/ace.min.js")
+#script("/js/icrawler/ace/ace.element.fileinput.min.js")
+#script("/js/icrawler/jquery/plugins/jquery.jquery-form.min.js")
+#script("/js/icrawler/inet/lib/icrawler-admin-import-template.min.js")
+
+<div id="report-import-template-toolbar" class="navbar-fixed-top wg-toolbar">
+  <button id="import-template-btn-create" type="button" class="btn btn-primary btn-small">
+    <i class="icon-plus"></i> $text.getText("icrawler.common.button.create")
+  </button>
+  <button id="import-template-btn-save" type="button" class="btn btn-primary btn-small">
+    <i class="icon-save"></i> $text.getText("icrawler.common.button.save")
+  </button>
+</div>
+<div id="report-import-template-wg-content" class="wg-content">
+    <div class="container-fluid">
+      <form id="import-template-frm" method="post" style="margin-bottom:0px;">
+          <input type ="hidden" id="report-import-template-txt-application" name="application" value="icrawler" class="col-md-12"/>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-2"><label class="ilabel control-label" for="report-import-template-txt-module">$text.getText("icrawler.admin.template.module") (<span class="required">):</span></label></div>
+              <div class="col-md-10"><select id="report-import-template-txt-module" name="module" class="col-md-12">
+              </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6" style="margin-bottom:10px;">
+            <div class="row">
+              <div class="col-md-3"><label class="ilabel control-label" for="report-import-template-cb-type">$text.getText("icrawler.admin.template.type") (<span class="required">):</span></label></div>
+              <div class="col-md-9">
+                <select id="report-import-template-cb-type" name="type" class="col-md-12" placeholder="$text.getText('kepler.paperwork.report.type')">
+               </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-2"><label class="ilabel control-label" for="report-import-template-txt-description">$text.getText("icrawler.admin.template.description") :</span></label></div>
+              <div class="col-md-10">
+                <input type ="text" id="report-import-template-txt-description" name="description" class="col-md-12"/>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-3"><label class="ilabel control-label" for="import-template-file">$text.getText("icrawler.admin.template.title") (<span class="required">):</span></label></div>
+              <div class="col-md-9">
+                <input type="hidden" id="import-template-value-template" value="" name="template"/>
+                <input type="file" id="import-template-file" name="FileUpload">
+                  <!--<div id="import-template-file">
+                    <label class="ace-file-input"><input type="file" id="import-template-txt-file" name="FileUpload"><span class="ace-file-container" data-title="$text.getText('icrawler.admin.template.choose')"><span class="ace-file-name" data-title="No File ..."><i class=" ace-icon fa fa-upload"></i></span></span><a class="remove" href="#"><i class=" ace-icon fa fa-times"></i></a></label>
+                  </div>-->
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+    <div id="report-import-template-search-grid"></div>
+</div>
+

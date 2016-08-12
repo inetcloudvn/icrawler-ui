@@ -1,0 +1,53 @@
+#theme("/common/css/inet-core-3.0.min")
+#theme("/common/css/grid.min")
+#theme("/common/css/common")
+#theme("/common/css/bootstrap/bootstrap-modal-bs3patch")
+#theme("/common/css/bootstrap/bootstrap-modal")
+#theme("/common/css/jquery/jquery.pnotify")
+#theme("/icralwer/css/ace-update")
+#theme("/icralwer/css/style")
+#theme("/icralwer/css/icralwer")
+#theme("/icralwer/css/format")
+#theme("/icralwer/css/report")
+#theme("/icralwer/css/select-user")
+
+#script("/js/common/inet/lib/inet-core.min.js")
+
+#script("::common/page/resources/plugin-zone")
+#script("::common/page/resources/common-zone")
+#script("::icralwer/page/resources/common/common-zone")
+
+#script("/js/common/inet/lib/inet-ui.min.js")
+#script("/js/common/inet/lib/inet-utilities.min.js")
+#script("/js/common/inet/lib/select.min.js")
+#script("/js/common/bootstrap/bs3/bootstrap.min.js")
+#script("/js/common/bootstrap/bs3/plugins/modal-bootstrap.min.js")
+#script("/js/common/bootstrap/plugins/bootstrap-datepicker.min.js")
+#script("/js/common/jquery/plugins/jquery.maskedinput.min.js")
+#script("/js/common/jquery/plugins/jquery.textarea-expander.min.js")
+#script("/js/common/jquery/plugins/jquery.searchable.min.js")
+#script("/js/icralwer/storage/jstorage.min.js")
+
+#script("/js/icralwer/inet/lib/inet-icralwer-ui.min.js")
+#script("/js/icralwer/inet/lib/inet-icralwer-utilities.min.js")
+
+#script("::icralwer/page/resources/admin/admin-zone")
+
+
+#xscript()
+  #set($contextPathStr = "" + $ctx.path())
+  #set($firmPrefix = $ctx.getFirmPrefix())
+  #set($firmPrefix = "/" + $firmPrefix)
+  #if($firmPrefix != $contextPathStr)
+    iNet.firmPrefix = '$ctx.getFirmPrefix()';
+  #end
+  iNet.context="$ctx.site.context";
+  iNet.prefix="$ctx.site.prefix";
+  iNet.extension = "$ctx.extension()";
+  iNet.path = "$ctx.path()";
+  iNet.allowedExtensions =  ['rtf','txt','csv','odt','ods','odp','odg', 'odf', 'odb', 'doc', 'docx', 'pdf', 'xls', 'xlsx', 'ppt', 'pptx' ,'png', 'jpg'];
+  iNet.sizeLimit = Number(1024*1024*100);//bytes
+  iNet.minSizeLimit = 0;
+  iNet.pageSize = Number( 10);
+  iNet.delayMessage = Number(4000);
+#end

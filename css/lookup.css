@@ -1,0 +1,97 @@
+.datagrid-header-right {
+  white-space: nowrap;
+}
+.bonsai li {
+  line-height: 22px;
+  font-size: 15px;
+}
+.tree-folder-item:hover>div.item, .tree-category-item:hover>div.item{
+  background: #EEF2F4;
+}
+.tree-folder-item a, .tree-folder-item a:hover, .tree-folder-item a:active {
+  text-decoration: none;
+}
+
+.tree-category-item a:hover, .tree-category-item a:active {
+  text-decoration: underline;
+}
+.tree-folder-item.selected>div.item, .tree-category-item.selected>div.item {
+  background: #D6F1FB;
+  border-radius: 1px;
+}
+.tree-folder-item .folder:before {
+  font-family: FontAwesome;
+  content: "\f07b";
+  color: #08C;
+}
+.tree-folder-item.selected .folder:before {
+  font-family: FontAwesome;
+  content: "\f07c";
+}
+.tree-category-item .category:before {
+  font-family: FontAwesome;
+  content: "\f02b";
+  color: #08C;
+}
+.tree-category-item.selected .category:before {
+  font-family: FontAwesome;
+  content: "\f00c";
+}
+.tree-folder-item .number {
+  border-radius: 9px;
+  background-clip: padding-box;
+  display: inline-block;
+  font-size: 12px;
+  right: 20px;
+  text-align: center;
+  min-width: 20px;
+  line-height: 20px;
+  background-color: #428bca !important;
+  position: absolute;
+  color: #FFF;
+  opacity: .88;
+}
+.bonsai li:after{
+  border-left: 1px dotted #000;
+  height: 100%;
+  width: 0px;
+  top: -17px;
+}
+.lookup .widget-header-flat {
+  background: #f7f7f7;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  /*background-color: #307ECC;
+  color: #FFF;*/
+  background: #F7F7F7;
+  color: #6A6C6F;
+  font-weight: bold;
+}
+.lookup-menu li {
+  list-style: none;
+  font-size: 15px;
+  padding-top: 2px;
+}
+.lookup-menu {
+  margin-left: 10px;
+}
+.lookup-menu li:hover{
+  background: #EEF2F4;
+}
+.lookup-menu li.selected {
+  background: #D6F1FB;
+  border-radius: 1px;
+}
+.lookup-menu a, .lookup-menu a:hover, .lookup-menu a:active{
+  text-decoration: none;
+}
+
+.lookup-menu li i.item:before {
+  font-style: normal;
+  font-family: FontAwesome;
+  content: "\f02d";
+}
+.lookup-menu li.selected .item:before {
+  font-style: normal;
+  font-family: FontAwesome;
+  content: "\f046";
+}

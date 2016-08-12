@@ -1,0 +1,266 @@
+#zone({"inherit":true})
+
+#scriptBundle("admin-script")
+  iNet.ns("iNet.resources",
+          "iNet.resources.icrawler",
+          "iNet.resources.icrawler.admin",
+          "iNet.resources.icrawler.admin.config",
+          "iNet.resources.icrawler.admin.org",
+          "iNet.resources.icrawler.admin.node",
+          "iNet.resources.icrawler.admin.alias",
+          "iNet.resources.icrawler.admin.CamelRegist",
+          "iNet.resources.icrawler.admin.group",
+          "iNet.resources.icrawler.admin.docViewConfig",
+          "iNet.resources.icrawler.admin.signumPattern",
+          "iNet.resources.icrawler.admin.dict",
+          "iNet.resources.icrawler.admin.ed",
+          "iNet.resources.icrawler.admin.gateway",
+          "iNet.resources.icrawler.admin.account"
+  );
+
+  if (iNet.resources.icrawler.admin.config) {
+    iNet.apply(iNet.resources.icrawler.admin.config, {
+      key_field : '$text.getText("ikepler.admin.config.key_field")',
+      value_field : '$text.getText("ikepler.admin.config.value_field")',
+      desc_field : '$text.getText("ikepler.admin.config.desc_field")',
+      value_field_required: '$text.getText("ikepler.admin.config.value_field_required")'
+    });
+  }
+  
+  if (iNet.resources.icrawler.admin.dict) {
+    iNet.apply(iNet.resources.icrawler.admin.dict, {
+      key_field : '$text.getText("ikepler.admin.dict.key_field")',
+      value_field : '$text.getText("ikepler.admin.dict.value_field")',
+      desc_field : '$text.getText("ikepler.admin.dict.desc_field")',
+      type_field : '$text.getText("ikepler.admin.dict.type_field")',
+      order_field: '$text.getText("ikepler.admin.dict.order_field")',
+      value_field_required: '$text.getText("ikepler.admin.dict.value_field_required")',
+      desc_field_required: '$text.getText("ikepler.admin.dict.desc_field_required")',
+      order_number_valid: '$text.getText("ikepler.admin.dict.order_number_valid")'
+    });
+  }
+  
+  if (iNet.resources.icrawler.admin.ed) {
+    iNet.apply(iNet.resources.icrawler.admin.ed, {
+      publish_parent_unit: '$text.getText("ikepler.admin.ed.publish_parent_unit")',
+      publish_unit: '$text.getText("ikepler.admin.ed.publish_unit")',
+      doc_category: '$text.getText("ikepler.admin.ed.doc_category")',
+      field: '$text.getText("ikepler.admin.ed.field")',
+      signer: '$text.getText("ikepler.admin.ed.signer")',
+      signer_position: '$text.getText("ikepler.admin.ed.signer_position")',
+      location:'$text.getText("ikepler.admin.ed.location")',
+      competence:'$text.getText("ikepler.admin.ed.competence")',
+      re_category:'$text.getText("ikepler.admin.ed.re_category")'
+    });
+  }
+  
+  if (iNet.resources.icrawler.admin.org) {
+    iNet.apply(iNet.resources.icrawler.admin.org, {
+      title: '$text.getText("ikepler.admin.org.title")',
+      type_field: '$text.getText("ikepler.admin.org.type_field")',
+      code_field : '$text.getText("ikepler.admin.org.code_field")',
+      name_field : '$text.getText("ikepler.admin.org.name_field")',
+      email_field:'$text.getText("ikepler.admin.org.email_field")',
+      parent_name_field : '$text.getText("ikepler.admin.org.parent_unit_field")',
+      type_field_required: '$text.getText("ikepler.admin.org.type_field_required")',
+      code_field_required: '$text.getText("ikepler.admin.org.code_field_required")',
+      name_field_required: '$text.getText("ikepler.admin.org.name_field_required")',
+      in_org_tooltip: '$text.getText("ikepler.admin.org.in_org_tooltip")',
+      ex_org_tooltip: '$text.getText("ikepler.admin.org.ex_org_tooltip")',
+      select_user_required : '$text.getText("ikepler.admin.org.select_user_required")',
+      select_user_dlg_title: '$text.getText("ikepler.admin.org.select_user_dlg_title")',
+      save_error:'$text.getText("ikepler.admin.org.save_error")',
+      save_success:'$text.getText("ikepler.admin.org.save_success")',
+      update_success:'$text.getText("ikepler.admin.org.update_success")',
+      synchronize_unit:'$text.getText("ikepler.admin.org.synchronize_unit")',
+      synchronize_error:'$text.getText("ikepler.admin.org.synchronize_error")',
+      synchronize_success:'$text.getText("ikepler.admin.org.synchronize_success")',
+      org_receiver_field_required:'$text.getText("ikepler.admin.org.org_receiver_field_required")'
+    });
+  }
+  
+  if (iNet.resources.icrawler.admin.node) {
+    iNet.apply(iNet.resources.icrawler.admin.node, {
+      type_field: '$text.getText("ikepler.admin.node.type_field")',
+      name_field : '$text.getText("ikepler.admin.node.name_field")',
+      name_field_required: '$text.getText("ikepler.admin.node.name_field_required")',
+      order_number_valid: '$text.getText("ikepler.admin.node.order_number_valid")',
+      select_user_required : '$text.getText("ikepler.admin.node.select_user_required")',
+      select_alias_dlg_title: '$text.getText("ikepler.admin.node.select_alias_dlg_title")',
+      select_receiver_dlg_title: '$text.getText("ikepler.admin.node.select_receiver_dlg_title")',
+      create_node_error: '$text.getText("ikepler.admin.node.create_node_error")',
+      loading_node_error: '$text.getText("ikepler.admin.node.loading_node_error")',
+      add_alias_error: '$text.getText("ikepler.admin.node.add_alias_error")',
+      add_to_group_title: '$text.getText("ikepler.admin.node.add_to_group_title")',
+      add_to_dept_title: '$text.getText("ikepler.admin.node.add_to_dept_title")',
+      refresh_title:'$text.getText("ikepler.admin.node.refresh_title")',
+      refresh_content:'$text.getText("ikepler.admin.node.refresh_content")',
+      sign_field_required: '$text.getText("ikepler.admin.org.sign_field_required")',
+      refresh_done:'$text.getText("ikepler.admin.org.refresh_done")',
+      choose_dept:'$text.getText("ikepler.admin.org.choose_dept")',
+      notify:'$text.getText("ikepler.admin.org.notify")',
+      move_content_comfirm:'$text.getText("ikepler.admin.org.move_content_comfirm")',
+      move_success:'$text.getText("ikepler.admin.org.move_success")',
+      move_exited:'$text.getText("ikepler.admin.org.move_exited")',
+      update_order_error:'$text.getText("ikepler.admin.org.update_order_error")',
+      sign_publish_not_space:'$text.getText("ikepler.admin.org.sign_publish_not_space")',
+      code_move_default_user:'$text.getText("ikepler.admin.org.code_move_default_user")'
+    });
+  }
+  
+  if (iNet.resources.icrawler.admin.alias) {
+    iNet.apply(iNet.resources.icrawler.admin.alias, {
+      title: '$text.getText("ikepler.admin.alias.title")',
+      fullname_field: '$text.getText("ikepler.admin.alias.fullname")',
+      name_field : '$text.getText("ikepler.admin.alias.alias")',
+      account_field : '$text.getText("ikepler.admin.alias.account")',
+      unit_field: '$text.getText("ikepler.admin.alias.unit")',
+      room_field: '$text.getText("ikepler.admin.alias.room_field")',
+      name_field_required: '$text.getText("ikepler.admin.alias.name_field_required")',
+      fullname_field_required: '$text.getText("ikepler.admin.alias.fullname_field_required")',
+      account_field_required: '$text.getText("ikepler.admin.alias.account_field_required")',
+      unit_field_required: '$text.getText("ikepler.admin.alias.unit_field_required")',
+      rank_field_required:'$text.getText("ikepler.admin.alias.rank_field_required")',
+      create: '$text.getText("ikepler.admin.alias.create")',
+      update: '$text.getText("ikepler.admin.alias.update")',
+      save_error:'$text.getText("ikepler.admin.alias.save_error")',
+      save_success:'$text.getText("ikepler.admin.alias.save_success")',
+      update_error:'$text.getText("ikepler.admin.alias.update_error")',
+      update_success:'$text.getText("ikepler.admin.alias.update_success")',
+      refresh_title:'$text.getText("ikepler.admin.alias.refresh_title")',
+      refresh_content:'$text.getText("ikepler.admin.alias.refresh_content")',
+      please_check:'$text.getText("ikepler.admin.alias.please_check")',
+      in_organ:'$text.getText("ikepler.admin.alias.in_organ")',
+      alias_in_unit:'$text.getText("ikepler.admin.alias.alias_in_unit")',
+      account_do_not_del:'$text.getText("ikepler.admin.alias.account_do_not_del")',
+      del_success:'$text.getText("ikepler.admin.alias.del_success")',
+      del_error:'$text.getText("ikepler.admin.alias.del_error")'
+});
+  }
+  
+  if (iNet.resources.icrawler.admin.bookcates) {
+    iNet.apply(iNet.resources.icrawler.admin.bookcates, {
+      name: '$text.getText("ikepler.admin.bookcates.name")',
+      code : '$text.getText("ikepler.admin.bookcates.code")',
+      code_required: '$text.getText("ikepler.admin.bookcates.code_required")',
+      name_required: '$text.getText("ikepler.admin.bookcates.name_required")',
+      empty_grid: '$text.getText("ikepler.admin.bookcates.empty_grid")',
+      code_too_long: '$text.getText("ikepler.admin.bookcates.code_too_long")',
+      name_too_long: '$text.getText("ikepler.admin.bookcates.name_too_long")',
+      book_not_empty: '$text.getText("ikepler.admin.bookcates.book_not_empty")',
+      year_not_empty: '$text.getText("ikepler.admin.bookcates.year_not_empty")',
+      sign_number_not_empty: '$text.getText("ikepler.admin.bookcates.sign_number_not_empty")',
+      reset: '$text.getText("ikepler.admin.bookcates.reset")',
+      reset_error: '$text.getText("ikepler.admin.bookcates.reset_error")',
+      reset_success: '$text.getText("ikepler.admin.bookcates.reset_success")'
+    });
+  }
+  if (iNet.resources.icrawler.admin.privilege) {
+    iNet.apply(iNet.resources.icrawler.admin.privilege, {
+      user_not_select: '$text.getText("ikepler.admin.privilege-book.user_not_select")',
+      user_exist: '$text.getText("ikepler.admin.privilege-book.user_exist")',
+      save_title: '$text.getText("ikepler.admin.privilege-book.save_title")',
+      save_content: '$text.getText("ikepler.admin.privilege-book.save_content")',
+      delete_user: '$text.getText("ikepler.admin.privilege-book.delete_user")',
+      remove_title: '$text.getText("ikepler.admin.privilege-book.remove_title")',
+      not_selected: '$text.getText("ikepler.admin.privilege-book.not_selected")',
+      error: '$text.getText("ikepler.admin.privilege-book.error")',
+      user_not_exit: '$text.getText("ikepler.admin.privilege-book.user_not_exit")'
+    });
+  }
+  
+  if (iNet.resources.icrawler.admin.gateway) {
+    iNet.apply(iNet.resources.icrawler.admin.gateway, {
+      title:'$text.getText("ikepler.admin.gateway.title")',
+      update_title:'$text.getText("ikepler.admin.gateway.update_title")',
+      address_not_empty:'$text.getText("ikepler.admin.gateway.address_not_empty")',
+      secret_key_not_empty:'$text.getText("ikepler.admin.gateway.secret_key_not_empty")',
+      access_key_not_empty:'$text.getText("ikepler.admin.gateway.access_key_not_empty")',
+      app_not_empty:'$text.getText("ikepler.admin.gateway.app_not_empty")',
+      update_error:'$text.getText("ikepler.admin.gateway.update_error")',
+      update_success:'$text.getText("ikepler.admin.gateway.update_success")',
+      load_config:'$text.getText("ikepler.admin.gateway.load_config")',
+      load_error:'$text.getText("ikepler.admin.gateway.load_error")',
+      comfirm_content_del:'$text.getText("ikepler.admin.gateway.comfirm_content_del")',
+      del_title:'$text.getText("ikepler.admin.gateway.del_title")',
+      del_error:'$text.getText("ikepler.admin.gateway.del_error")',
+      del_success:'$text.getText("ikepler.admin.gateway.del_success")',
+      testing:'$text.getText("ikepler.admin.gateway.testing")',
+      test_error:'$text.getText("ikepler.admin.gateway.test_error")'
+    });
+  }
+  
+  if (iNet.resources.icrawler.admin.VisionSphereService) {
+    iNet.apply(iNet.resources.icrawler.admin.VisionSphereService, {
+      note : '$text.getText("ikepler.admin.vision_sphere.note")',
+      vision_selected : '$text.getText("ikepler.admin.vision_sphere.vision_selected")',
+      notice : '$text.getText("ikepler.admin.vision_sphere.notice")',
+      save_error : '$text.getText("ikepler.admin.vision_sphere.save_error")',
+      save_success: '$text.getText("ikepler.admin.vision_sphere.save_success")',
+      refastree_success : '$text.getText("ikepler.admin.vision_sphere.refastree_success")',
+      refastring : '$text.getText("ikepler.admin.vision_sphere.refastring")',
+    });
+  }
+  
+  if (iNet.resources.icrawler.admin.SupervisionInfo) {
+    iNet.apply(iNet.resources.icrawler.admin.SupervisionInfo, {
+      note : '$text.getText("ikepler.admin.supervision_info.note")',
+      notice : '$text.getText("ikepler.admin.supervision_info.notice")',
+      save_error : '$text.getText("ikepler.admin.supervision_info.save_error")',
+      save_success: '$text.getText("ikepler.admin.supervision_info.save_success")',
+      load_error : '$text.getText("ikepler.admin.supervision_info.load_error")'
+    });
+  }
+
+    if (iNet.resources.icrawler.admin.CamelRegist) {
+        iNet.apply(iNet.resources.icrawler.admin.CamelRegist, {
+            notice : '$text.getText("ikepler.admin.camel-regist.notice")',
+            save_error : '$text.getText("ikepler.admin.camel-regist.save_error")',
+            save_success: '$text.getText("ikepler.admin.camel-regist.save_success")',
+            registing : '$text.getText("ikepler.admin.camel-regist.registing")',
+            regist_error : '$text.getText("ikepler.admin.camel-regist.regist_error")',
+            regist_success : '$text.getText("ikepler.admin.camel-regist.regist_success")',
+            server_url_empty : '$text.getText("ikepler.admin.camel-regist.server_url")',
+            server_url_invalid : '$text.getText("ikepler.admin.camel-regist.server_invalid")',
+            none_regist_success: '$text.getText("ikepler.admin.camel-regist.none_regist_success")',
+            regist_fail: '$text.getText("ikepler.admin.camel-regist.regist_fail")'
+        });
+    }
+
+    if (iNet.resources.icrawler.admin.group) {
+        iNet.apply(iNet.resources.icrawler.admin.group, {
+            title: '$text.getText("ikepler.admin.group.title")',
+            name: '$text.getText("ikepler.admin.group.name")',
+            name_field_required:'$text.getText("ikepler.admin.group.name_field_required")',
+            unit:'$text.getText("ikepler.admin.group.unit")',
+            order: '$text.getText("ikepler.admin.group.order")',
+            unit_field_required : '$text.getText("ikepler.admin.group.unit_field_required")',
+        });
+    }
+    if (iNet.resources.icrawler.admin.docViewConfig) {
+        iNet.apply(iNet.resources.icrawler.admin.docViewConfig, {
+            title: '$text.getText("ikepler.admin.doc-view-config.title")',
+            notice: '$text.getText("ikepler.admin.doc-view-config.notice")',
+            save_success: '$text.getText("ikepler.admin.doc-view-config.save_success")'
+        });
+    }
+    if (iNet.resources.icrawler.admin.signumPattern) {
+        iNet.apply(iNet.resources.icrawler.admin.signumPattern, {
+          category: '$text.getText("ikepler.admin.signumpattern.category")',
+          category_not_empty: '$text.getText("ikepler.admin.signumpattern.category_not_empty")',
+          config_not_empty: '$text.getText("ikepler.admin.signumpattern.config_not_empty")',
+          pattern: '$text.getText("ikepler.admin.signumpattern.pattern")',
+          pattern_valid: '$text.getText("ikepler.admin.signumpattern.pattern_valid")'
+        });
+    }
+
+    if (iNet.resources.icrawler.admin.account) {
+        iNet.apply(iNet.resources.icrawler.admin.account, {
+          USER_EXISTED_account: 'Tài khoản này đã được sử dụng',
+          USER_DUPLICATED_account:'Tài khoản này đã bị trùng'
+        });
+    }
+
+#end
+
+#end

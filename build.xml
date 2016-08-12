@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module-icrawler" basedir=".">
+    <property name="project-name" value="icrawler" />
+    <property name="deploy.dir" value="/home/thoangtd/programs/wildfly-crawler/standalone/module/thoangtd"/>
+
+    <property name="js.dir" value="${basedir}/js" />
+    <property name="js-admin.dir" value="${js.dir}/inet/ui/admin" />
+    <property name="css.dir" value="${basedir}"/>
+    <property name="font.dir" value="${basedir}"/>
+    <property name="images.dir" value="${basedir}"/>
+    <property name="page.dir" value="${basedir}"/>
+    <property name="widget.dir" value="${basedir}"/>
+    <property name="message.dir" value="${basedir}"/>
+
+    <property name="build.dir" value="${basedir}/target/build" />
+    <property name="target.dir" value="${basedir}/target" />
+
+    <property name="jsbuilder" location="/home/thoangtd/tools/jsbuilder.jar" />
+    <taskdef name="jsbuilder" classname="org.antz29.jsbuilder.ant.BuilderTask" classpath="${jsbuilder}" />
+
+    <target name="clean">
+        <delete dir="${build.dir}" deleteonexit="true"/>
+        <delete dir="${target.dir}" deleteonexit="true"/>
+    </target>
+
+    <target name="init" description="Create the build dir">
+        <!--<delete dir="${build.dir}" deleteonexit="true"/>-->
+        <!--<delete dir="${target.dir}" deleteonexit="true"/>-->
+        <mkdir dir="${build.dir}" />
+        <mkdir dir="${target.dir}"/>
+    </target>
+
+    <target name="inet-icrawler-about.compile" description="iNet iCrawler about" depends="init">
+        <delete dir="${build.dir}/js/inet/lib/{PACKAGE}.min.js" failonerror="false" />
+        <jsbuilder dir="${build.dir}/js/inet/lib" pattern="{PACKAGE}.min.js">
+            <module package="about" name='iNet' file="${js.dir}/inet/About.js"/>
+        </jsbuilder>
+    </target>
+    <target name="inet-icrawler-ui.compile" description="iNet iCrawler ui" depends="init">
+        <delete dir="${build.dir}/js/inet/lib/{PACKAGE}.min.js" failonerror="false" />
+        <jsbuilder dir="${build.dir}/js/inet/lib" pattern="{PACKAGE}.min.js">
+            <module package="inet-icrawler-ui" name='iNet' file="${js.dir}/inet/ui/NameSpace.js"/>
+            <module package="inet-icrawler-ui" name='iNet' file="${js.dir}/inet/ui/AbstractWidget.js"/>
+        </jsbuilder>
+    </target>
+    <target name="inet-icrawler-utils.compile" description="iNet iCrawler utils" depends="init">
+        <delete dir="${build.dir}/js/inet/lib/{PACKAGE}.min.js" failonerror="false" />
+        <jsbuilder dir="${build.dir}/js/inet/lib" pattern="{PACKAGE}.min.js">
+            <source path="${js.dir}/inet/ui/utils"/>
+        </jsbuilder>
+    </target>
+    <target name="inet-icrawler-common-service.compile" description="iNet iCrawler common service" depends="init">
+        <delete dir="${build.dir}/js/inet/lib/{PACKAGE}.min.js" failonerror="false" />
+        <jsbuilder dir="${build.dir}/js/inet/lib" pattern="{PACKAGE}.min.js">
+            <source path="${js.dir}/inet/ui/common"/>
+        </jsbuilder>
+    </target>
+    <target name="icrawler-common-verify.compile" description="iNet iCrawler common verify service" depends="init">
+        <delete dir="${build.dir}/js/inet/lib/{PACKAGE}.min.js" failonerror="false" />
+        <jsbuilder dir="${build.dir}/js/inet/lib" pattern="{PACKAGE}.min.js">
+            <module package="icrawler-common-verify" name='iNet' file="${js.dir}/inet/ui/common/AccountVerify.js"/>
+        </jsbuilder>
+    </target>
+    <target name="icrawler-role-menu.compile" description="iNet iCrawler role menu service" depends="init">
+        <delete dir="${build.dir}/js/inet/lib/{PACKAGE}.min.js" failonerror="false" />
+        <jsbuilder dir="${build.dir}/js/inet/lib" pattern="{PACKAGE}.min.js">
+            <module package="icrawler-role-menu" name='iNet' file="${js.dir}/inet/ui/common/RoleMenuItem.js"/>
+        </jsbuilder>
+    </target>
+    <target name="icrawler-sidebar-menu.compile" description="iNet ikepler role menu service" depends="init">
+        <delete dir="${build.dir}/js/inet/lib/{PACKAGE}.min.js" failonerror="false" />
+        <jsbuilder dir="${build.dir}/js/inet/lib" pattern="{PACKAGE}.min.js">
+            <module package="icrawler-sidebar-menu" name='iNet' file="${js.dir}/inet/ui/common/SideBar.js"/>
+        </jsbuilder>
+    </target>
+
+    <target name="admin-import-template.compile" description="iNet iCrawler admin import template" depends="init">
+        <delete dir="${build.dir}/js/inet/lib/{PACKAGE}.min.js" failonerror="false" />
+        <jsbuilder dir="${build.dir}/js/inet/lib" pattern="{PACKAGE}.min.js">
+            <source path="${js-admin.dir}/template"/>
+        </jsbuilder>
+    </target>
+    <target name="admin-system-config.compile" description="iNet iCrawler admin system config" depends="init">
+        <delete dir="${build.dir}/js/inet/lib/{PACKAGE}.min.js" failonerror="false" />
+        <jsbuilder dir="${build.dir}/js/inet/lib" pattern="{PACKAGE}.min.js">
+            <source path="${js-admin.dir}/system-config"/>
+        </jsbuilder>
+    </target>
+    <target name="admin-dictionary.compile" description="iNet iCrawler admin dictionary" depends="init">
+        <delete dir="${build.dir}/js/inet/lib/{PACKAGE}.min.js" failonerror="false" />
+        <jsbuilder dir="${build.dir}/js/inet/lib" pattern="{PACKAGE}.min.js">
+            <source path="${js-admin.dir}/dictionary"/>
+            <module package="icrawler-admin-dictionary" name='iNet' file="${js.dir}/inet/ui/admin/dictionary/DictionaryService.js"/>
+            <module package="icrawler-admin-dictionary" name='iNet' file="${js.dir}/inet/ui/admin/dictionary/UnitCodeColumn.js"/>
+        </jsbuilder>
+    </target>
+    <target name="admin-gateway.compile" description="iNet iCrawler admin gateway" depends="init">
+        <delete dir="${build.dir}/js/inet/lib/{PACKAGE}.min.js" failonerror="false" />
+        <jsbuilder dir="${build.dir}/js/inet/lib" pattern="{PACKAGE}.min.js">
+            <source path="${js-admin.dir}/gateway"/>
+            <module package="icrawler-admin-gateway" name='iNet' file="${js.dir}/inet/ui/admin/gateway/GatewayService.js"/>
+        </jsbuilder>
+    </target>
+    <target name="jquery-plugins.compile" description="jQuery Plugins" depends="init">
+        <delete dir="${build.dir}/js/jquery/plugins" failonerror="false" />
+        <jsbuilder dir="${build.dir}/js/jquery/plugins" pattern="{MODULE}.min.js">
+            <source path="${js.dir}/jquery/plugins"/>
+        </jsbuilder>
+    </target>
+
+    <target name="ace-plugins.compile" description="Ace Plugins" depends="init">
+        <delete dir="${build.dir}/js/ace" failonerror="false" />
+        <jsbuilder dir="${build.dir}/js/ace" pattern="{MODULE}.min.js">
+            <source path="${js.dir}/ace"/>
+        </jsbuilder>
+    </target>
+
+    <target name="bootstrap-plugins.compile" description="Bootstrap Plugins" depends="init" >
+        <delete dir="${build.dir}/js/bootstrap/plugins" failonerror="false" />
+        <jsbuilder dir="${build.dir}/js/bootstrap/plugins" pattern="{MODULE}.min.js">
+            <source path="${js.dir}/bootstrap/plugins"/>
+        </jsbuilder>
+    </target>
+
+    <target name="zip" depends=
+            "inet-icrawler-about.compile,
+            inet-icrawler-ui.compile,
+            inet-icrawler-utils.compile,
+            icrawler-sidebar-menu.compile,
+            icrawler-common-verify.compile,
+            icrawler-role-menu.compile,
+            admin-system-config.compile,
+            admin-dictionary.compile,
+            admin-import-template.compile,
+            admin-gateway.compile,
+            jquery-plugins.compile,
+            bootstrap-plugins.compile,
+            ace-plugins.compile">
+        <zip destfile="${target.dir}/${project-name}.zip">
+            <fileset dir="${build.dir}" includes="**/*.min.js"/>
+            <fileset dir="${basedir}" includes="js/inet/lib/*.min.js,js/bootstrap/**/*.min.js,js/jquery/**/*.min.js,*.profile,**/*-lang-*.js,js/storage/*.min.js,js/jquery/charts/*.min.js"/>
+            <fileset dir="${css.dir}" includes="**/*.css"/>
+            <fileset dir="${font.dir}" includes="font/*.*"/>
+            <fileset dir="${images.dir}" includes="images/**/*.*"/>
+            <fileset dir="${widget.dir}" includes="widget/**/*.*"/>
+            <fileset dir="${page.dir}" includes="page/**/*.*"/>
+            <fileset dir="${message.dir}" includes="message/*.*"/>
+        </zip>
+    <!--<delete dir="${build.dir}" deleteonexit="true"/>-->
+    </target>
+
+    <target name="deploy" depends="zip">
+        <copy todir="${deploy.dir}" file="${target.dir}/${project-name}.zip" overwrite="true"/>
+    </target>
+
+</project>

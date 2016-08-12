@@ -1,0 +1,43 @@
+.bgImageLinearGradient(@pos, @fcolor, @lcolor){
+  background-image: -webkit-linear-gradient(@pos, @fcolor, @lcolor);
+  background-image: -moz-linear-gradient(@pos, @fcolor, @lcolor);
+  background-image: -ms-linear-gradient(@pos, @fcolor, @lcolor);
+  background-image: -o-linear-gradient(@pos, @fcolor, @lcolor);
+  background-image: linear-gradient(@pos, @fcolor, @lcolor);
+}
+.bgLinearGradient(@pos, @fcolor, @lcolor) {
+  background: -webkit-linear-gradient(@pos, @fcolor, @lcolor);
+  background: -o-linear-gradient(@pos, @fcolor, @lcolor);
+  background: -moz-linear-gradient(@pos, @fcolor, @lcolor);
+  background: -ms-linear-gradient(@pos, @fcolor, @lcolor);
+  background: linear-gradient(@pos, @fcolor, @lcolor);
+}
+.renderMP(@px, @pos, @type) when (@pos = t) {
+  @{type}-top: @px !important;
+}
+.renderMP(@px, @pos, @type) when (@pos = r) {
+  @{type}-right: @px !important;
+}
+.renderMP(@px, @pos, @type) when (@pos = b) {
+  @{type}-bottom: @px !important;
+}
+.renderMP(@px, @pos, @type) when (@pos = l) {
+  @{type}-left: @px !important;
+}
+.renderMP(@px, @pos, @type) when (@pos = all) {
+  @{type}: @px;
+}
+.generateMP(@n, @pos, @type, @i: 1) when ((@i * 5) =< @n) and not (@pos = all) {
+  @t: (@i * 5);
+  .@{type}-@{pos}-@{t} {
+    .renderMP((@i * 5px), @pos, @type);
+  }
+  .generateMP(@n, @pos, @type, (@i + 1));
+}
+.generateMP(@n, @pos, @type,  @i: 1) when ((@i * 5) =< @n) and (@pos = all) {
+  @t: (@i * 5);
+  .@{type}-@{t} {
+    .renderMP((@i * 5px), @pos, @type);
+  }
+  .generateMP(@n, @pos, @type, (@i + 1));
+}

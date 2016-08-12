@@ -1,0 +1,168 @@
+
+.ace-spinner {
+  display:inline-block
+}
+.ace-spinner .spinbox-buttons.btn-group-vertical {
+  min-width:18px
+}
+.ace-spinner .spinbox-buttons.btn-group-vertical>.btn {
+  font-size:10px;
+  padding:0;
+  width:22px;
+  height:16px;
+  line-height:8px;
+  margin-left:0
+}
+.ace-spinner .spinbox-buttons.btn-group-vertical>.btn:first-child {
+  margin-top:0
+}
+.ace-spinner .spinbox-buttons.btn-group-vertical>.btn>.ace-icon {
+  margin:0;
+  padding:0
+}
+.ace-spinner .spinbox-buttons.btn-group-vertical>.btn+.btn {
+  margin-top:2px
+}
+.ace-spinner .spinbox-buttons.btn-group-vertical>.btn-xs {
+  height:14px;
+  line-height:7px
+}
+.ace-spinner .spinbox-buttons.btn-group-vertical>.btn-lg {
+  height:22px;
+  line-height:10px;
+  width:22px
+}
+.steps>li .step,.steps>li.complete .step:before {
+  line-height:30px;
+  background-color:#FFF;
+  text-align:center
+}
+.ace-spinner .spinbox-buttons>button.btn.spinbox-up:active {
+  top:-1px
+}
+.ace-spinner:not(.touch-spinner) .spinbox-buttons>.btn>.ace-icon {
+  margin-top:-1px
+}
+.ace-spinner.touch-spinner .spinbox-buttons {
+  margin:0;
+  font-size:0
+}
+.ace-spinner.touch-spinner .spinbox-buttons .btn-sm {
+  width:32px;
+  padding-left:6px;
+  padding-right:6px
+}
+.ace-spinner.touch-spinner .spinbox-buttons .btn-xs {
+  width:24px;
+  padding-left:4px;
+  padding-right:4px
+}
+.ace-spinner.touch-spinner .spinbox-buttons .btn-lg {
+  width:40px;
+  padding-left:8px;
+  padding-right:8px
+}
+.ace-spinner.touch-spinner .spinbox-buttons>.btn {
+  margin:0 1px!important
+}
+.ace-spinner.touch-spinner .spinbox-buttons>.btn-xs {
+  padding-top:3px;
+  padding-bottom:3px
+}
+
+/*
+  process
+*/
+.progress {
+  border-radius: 0;
+  height: 18px;
+  box-shadow: none;
+  background: #dadada
+}
+.progress .bar {
+  box-shadow: none;
+  line-height: 18px
+}
+.progress[data-percent] {
+  position: relative
+}
+.progress[data-percent]:after {
+  display: inline-block;
+  content: attr(data-percent);
+  color: #FFF;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  line-height: 16px;
+  text-align: center;
+  font-size: 12px;
+  font-family: Verdana
+}
+.progress.progress-small {
+  height: 12px
+}
+.progress.progress-small .bar {
+  line-height: 10px;
+  font-size: 11px
+}
+.progress.progress-small[data-percent]:after {
+  line-height: 10px;
+  font-size: 11px
+}
+.progress.progress-mini {
+  height: 9px
+}
+.progress.progress-mini .bar {
+  line-height: 8px;
+  font-size: 11px
+}
+.progress.progress-mini[data-percent]:after {
+  line-height: 8px;
+  font-size: 11px
+}
+.progress .bar {
+  background-image: none;
+  background-color: #2a91d8
+}
+.progress-danger .bar, .progress .bar-danger {
+  background-image: none;
+  background-color: #ca5952
+}
+.progress-success .bar, .progress .bar-success {
+  background-image: none;
+  background-color: #59a84b
+}
+.progress-warning .bar, .progress .bar-warning {
+  background-image: none;
+  background-color: #f2bb46
+}
+.progress .bar+.bar {
+  box-shadow: none
+}
+.progress-danger.progress-striped .bar, .progress-striped .bar-danger {
+  background-color: #cc4942
+}
+.progress-warning.progress-striped .bar, .progress-striped .bar-warning {
+  background-color: #eba450
+}
+.progress-success.progress-striped .bar, .progress-striped .bar-success {
+  background-color: #55b83b
+}
+.progress-info.progress-striped .bar, .progress-striped .bar-info {
+  background-color: #148bcf
+}
+.progress {
+  position: relative
+}
+.progress:before {
+  display: inline-block;
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: radial-gradient(9px 9px 0deg, circle cover, aqua 0, rgba(0,0,255,0) 100%, blue 95%)
+}

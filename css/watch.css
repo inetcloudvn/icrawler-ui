@@ -1,0 +1,105 @@
+.body>.name>.alias {
+  color:#08C !important;
+}
+.body>.name>.fullname {
+  color: #808080 !important;
+  font-weight: bold;
+}
+.ptree, .ptree ul{
+  font: normal normal 14px/20px Helvetica, Arial, sans-serif;
+  list-style-type: none;
+  margin-left: 10px;
+  padding: 0;
+  position: relative;
+  overflow:hidden;
+}
+.ptree li{
+  margin: 0;
+  padding: 5px 18px;
+  position: relative;
+  line-height: 28px;
+  width: 100%;
+}
+
+.ptree li::before, .ptree li::after{
+  content: '';
+  position: absolute;
+  left: 0;
+}
+
+/* horizontal line on inner list items */
+.ptree li::before{
+  content: '→';
+
+}
+
+/* vertical line on list items */
+.ptree li:after{
+  border-left: 1px solid #000;
+  height: 100%;
+  width: 0px;
+  top: -17px;
+}
+
+/* hide line from the last of the first level list items */
+.ptree > li:last-child::after{
+  display: none;
+}
+
+.ptree > li:first-child:before {
+  font-family: FontAwesome;
+  content: "\f016";
+  padding-left: 2px;
+}
+.ptree .node {
+  border: 1px solid #9E9E9E;
+  padding: 5px;
+  border-radius: 2px;
+}
+
+.ptree .node.create {
+  background-color: #DAFFDA
+}
+.ptree .node.processing {
+  /*background-color: #00BFFF;*/
+  background-color: #3a87ad;
+  color: #fff;
+}
+.ptree .node.completed {
+  /*background-color: #7FFEFF;*/
+  background-color: #8FBC8F;
+}
+.ptree .node.assigned {
+  background-color: #f89406;
+}
+.ptree .node.returned {
+  /*background-color: #FFA500;*/
+  background-color: #808080;
+}
+.ptree .node.authorized {
+  background-color: #8FBC8F;
+}
+.ptree .node.resolved {
+  background-color: #536F47;
+  color: #fff;
+}
+.ptree .node.lated {
+  background-color: #dd5a43;
+  color: #fff;
+}
+.ptree .node.retrieved {
+  background-color: grey;
+  color: #fff;
+}
+.ptree ul>li:last-child:after {
+  height: 37px !important;
+}
+li.itemdiv.resp-main:not(.has-children) > .body .label-success {
+  background-color: #536F47 !important;
+}
+li.itemdiv.resp-main:not(.has-children) > .body .arrowed:before {
+  border-right-color: #536F47 !important;
+}
+li.itemdiv.resp-main:not(.has-children) > .body .arrowed-in-right:after {
+  border-color: #536F47 !important;
+}

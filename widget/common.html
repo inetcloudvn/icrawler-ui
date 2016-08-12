@@ -1,0 +1,56 @@
+#theme("/common/css/inet-core-3.0.min")
+#theme("/common/css/grid.min")
+#theme("/common/css/common")
+#theme("/common/css/jquery/jquery.pnotify")
+#theme("/common/css/bootstrap/bootstrap-modal-bs3patch")
+#theme("/common/css/bootstrap/bootstrap-modal")
+#theme("/common/css/bootstrap/bootstrap-datepicker")
+#theme("/icrawler/css/ace-update")
+#theme("/icrawler/css/style")
+#theme("/icrawler/css/icrawler")
+#theme("/icrawler/css/format")
+#theme("/icrawler/css/report")
+#theme("/icrawler/css/select-user")
+
+#script("/js/common/inet/lib/inet-core.min.js")
+#script("/js/common/inet/lib/inet-utilities.min.js")
+#script("/js/common/inet/lib/inet-ui.min.js")
+#script("/js/common/bootstrap/plugins/bootstrap-datepicker.min.js")
+#script("/js/common/jquery/plugins/jquery.maskedinput.min.js")
+#script("/js/common/jquery/plugins/jquery.textarea-expander.min.js")
+#script("/js/common/jquery/plugins/jquery.searchable.min.js")
+#script("/js/common/jquery/plugins/jquery.slimscroll.min.js")
+#script("/js/common/bootstrap/bs3/bootstrap.min.js")
+#script("/js/common/bootstrap/bs3/plugins/modal-bootstrap.min.js")
+
+#script("/js/icrawler/storage/jstorage.min.js")
+#script("/js/icrawler/inet/lib/inet-icrawler-ui.min.js")
+#script("/js/icrawler/inet/lib/inet-icrawler-utilities.min.js")
+
+#script("::common/page/resources/plugin-zone")
+#script("::common/page/resources/common-zone")
+#script("::icrawler/page/resources/common/common-zone")
+#script("::icrawler/page/resources/steerwork/steering-zone")
+
+#script("/js/common/inet/lib/select.min.js")
+#xscript()
+
+  #set($contextPathStr = "" + $ctx.path())
+  #set($firmPrefix = $ctx.getFirmPrefix())
+  #set($firmPrefix = "/" + $firmPrefix)
+  #if($firmPrefix != $contextPathStr)
+    iNet.firmPrefix = '$ctx.getFirmPrefix()';
+  #end
+
+  iNet.prefix="$ctx.site.prefix";
+  iNet.extension = "$ctx.extension()";
+  iNet.path = "$ctx.path()";
+  iNet.systemConfig = {#foreach( $config in $configs.elements )#if($foreach.index> 0),#end "$config.key":"$config.value" #end};
+  iNet.allowedExtensions = (iNet.systemConfig.file_upload_format || '').split(';') || ['rtf','txt','csv','odt','ods','odp','odg', 'odf', 'odb', 'doc', 'docx', 'pdf', 'xls', 'xlsx', 'ppt', 'pptx' ,'png', 'jpg'];
+  iNet.sizeLimit = Number(iNet.systemConfig.max_size_upload || 1024*1024*100);//bytes
+  iNet.minSizeLimit = 0;
+  iNet.pageSize = Number(iNet.systemConfig.item_per_page || 10);
+  iNet.delayMessage = Number(iNet.systemConfig.message_time_out || 4000);
+  iNet.usercode = "$ctx.usercode()";
+  iNet.displayName = "$ctx.getUsername()";
+#end

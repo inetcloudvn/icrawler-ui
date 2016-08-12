@@ -1,0 +1,31 @@
+#html({"lang":"vi","dir":"ltr","secure":"$ikl.sys.comm", "xmlns":"http://www.w3.org/1999/xhtml", "inherit":true})
+#keywords({"title":'iCrawler - $text.getText("icrawler.admin.title")'})
+#meta({ "title":"iCloud Platform","viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"})
+#widget("/common/widget/header")
+#widget("/icrawler/widget/common/header")
+
+
+<div id="main-container" class="container-fluid">
+    #widget("/icrawler/widget/admin/menu")
+    <div id="main-content" class="clearfix">
+        <div id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li><i class="icon-home"></i><a href="javascript:;">$text.getText("icrawler.admin.menu.data_management")</a>
+                    <span class="divider"><i class="icon-angle-right"></i></span></li>
+                <li class="active"></li>
+            </ul>
+        </div>
+        <div id="page-content" class="clearfix">
+            <div id="loading-msg"><i class="icon-refresh icon-spin"></i> $text.getText("icrawler.common.loading")</div>
+            <iframe id="iframe-content"></iframe>
+        </div>
+    </div>
+</div>
+#widget("/icrawler/widget/common/app")
+#xscript()
+    if(!$admin){
+        window.location.href="$ctx.page('/icrawler/page/index')";
+    }
+#end
+#end
+

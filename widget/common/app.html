@@ -1,0 +1,28 @@
+#theme("/icrawler/css/app")
+#script("/js/icrawler/inet/lib/about.min.js")
+#xscript()
+  $(function () {
+    var header = new iNet.ui.common.Header({
+        title : "$text.getText('icrawler.common.title')",
+        iconCls: 'icon-desktop',
+        autoDetect: true
+    });
+
+    var leftMenu = new iNet.ui.common.Menu();
+
+    var application = new iNet.app.Application({
+        title: 'iCrawler',
+        header: header,
+        menu: leftMenu,
+        hideFooter: true,
+        defaultUrl: iNet.getUrl('/icrawler/page/search/home'),
+        dropTab: false
+    });
+
+    application.on('logout', function() {
+      if(window.SecurityUtils) {
+        window.SecurityUtils.clear();
+      }
+    });
+  });
+#end

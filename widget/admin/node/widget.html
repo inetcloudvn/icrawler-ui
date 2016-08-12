@@ -1,0 +1,231 @@
+#theme("/icrawler/css/jquery/jquery.treetable")
+
+#script("/js/common/inet/lib/select.min.js")
+
+#script("/js/common/jquery/plugins/jquery.numeric.min.js")
+#script("/js/common/jquery/plugins/jquery.searchable.min.js")
+#script("/js/common/jquery/plugins/jquery-ui.min.js")
+#script("/js/icrawler/jquery/plugins/jquery.treetable.min.js")
+
+#script("/js/icrawler/inet/lib/icrawler-admin-dialog-select-user.min.js")
+#script("/js/icrawler/inet/lib/inet-icrawler-alias-dialog.min.js")
+#script("/js/icrawler/inet/lib/icrawler-admin-node.min.js")
+
+
+<div id="wg-toolbar" class="navbar-fixed-top">
+  <button id="node-btn-reload" class="btn btn-primary btn-small">
+    <i class="icon-rotate-left"></i> $text.getText("icrawler.common.button.reload")
+  </button>
+  <button id="node-btn-create" class="btn btn-primary btn-small hide hidden-phone" disabled="disabled">
+    <i class="icon-plus"></i> $text.getText("icrawler.common.button.create")
+  </button>
+  <button id="node-btn-edit" class="btn btn-primary btn-small hide" disabled="disabled">
+    <i class="icon-pencil"></i> $text.getText("icrawler.common.button.edit")
+  </button>
+  <button id="node-btn-edit-unit" class="btn btn-primary btn-small hide" disabled="disabled">
+    <i class="icon-pencil"></i> $text.getText("icrawler.common.button.edit")
+  </button>
+  <button id="node-btn-add-to-group" class="btn btn-primary btn-small hide hidden-phone" disabled="disabled">
+    <i class="icon-plus-sign"></i> $text.getText("icrawler.admin.node.add_to_group")
+  </button>
+  <button id="node-btn-add-to-dept" class="btn btn-primary btn-small hide hidden-phone" disabled="disabled">
+    <i class="icon-plus-sign"></i> $text.getText("icrawler.admin.node.add_to_dept")
+  </button>
+  <button id="node-btn-move-to-dept" class="btn btn-primary btn-small hide hidden-phone" disabled="disabled">
+    <i class="icon-share-alt"></i> $text.getText("icrawler.admin.node.move_to_dept")
+  </button>
+<!--  <button id="node-btn-btn-refresh" class="btn btn-primary btn-small hidden-phone">
+    <i class="icon-refresh"></i> $text.getText("icrawler.common.button.refresh")
+  </button>-->
+  <button id="node-btn-delete" class="btn btn-danger btn-small hide" disabled="disabled">
+    <i class="icon-trash"></i> $text.getText("icrawler.common.button.delete")
+  </button>
+</div>
+<div class="wg-content">
+  <div id="node-header" class="ilabel" style="background: linear-gradient(to bottom, #F8F8F8 0, #ECECEC 100%);border: 1px solid #DDD;">
+    <div id="node-header-waring-dirty" class="alert alert-warning hide">
+      <i class="icon-warning-sign"></i> $text.getText("icrawler.admin.warning_refresh_first") <b><a id="node-header-waring-dirty-link" href="javascript:;">$text.getText("icrawler.admin.warning_refresh_last")</a></b>
+    </div>
+      <span class="listview-toolbar input-icon input-icon-right">
+          <input id="node-search-txt-keyword" data-type="searchable" style="min-width: 300px" type="text" placeholder='$text.getText("icrawler.common.grid.search_placeholder")'>
+          <i class="ace-icon fa fa-search" style="right: 5px;cursor: pointer"></i>
+      </span>
+  </div>
+  <div id="node-user-list" class="row-fluid" style="overflow: auto">
+  </div>
+  <!-- Config modal -->
+  <div id="org-modal-config"  class="modal fade in" tabindex="-1" data-focus-on="input:first" data-max-height="600" data-width="765">
+    <div class="modal-header">
+      <button type="button" tabindex="111" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h3><i class="icon-wrench"></i> $text.getText("icrawler.admin.org.config_text")</h3>
+    </div>
+    <div class="modal-body">
+      <div class="form-horizontal">
+        <div class="form-group">
+          <label class="col-sm-3 control-label ilabel no-padding-right" for="dlg-org-txt-code">$text.getText("icrawler.admin.org.code_office") (<span class="required" />):</label>
+          <div class="col-sm-9">
+            <input type="text"class="form-control uppercase"  tabindex="101" id="dlg-org-txt-code" placeholder='$text.getText("icrawler.admin.org.code_placehoder")' maxlength="16">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label ilabel no-padding-right" for="dlg-org-txt-name">$text.getText("icrawler.admin.org.name_office") (<span class="required" />):</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" tabindex="102" id="dlg-org-txt-name" maxlength="128">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label ilabel no-padding-right" for="dlg-org-txt-domain">$text.getText("icrawler.admin.org.domain_field"):</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" tabindex="104" id="dlg-org-txt-domain" maxlength="64">
+          </div>
+        </div>
+        <div class="form-group" id="div-dlg-org-select-receiver">
+          <label class="col-sm-3 control-label ilabel no-padding-right" for="dlg-org-select-receiver">$text.getText("icrawler.admin.org.receiver_field"):</label>
+          <div class="col-sm-9">
+            <span class="input-icon input-icon-right" style="width: 100% !important;">
+              <input type="text"  tabindex="106" id="dlg-org-select-receiver" disabled="disabled" style="width: 100% !important;"/>
+                <i id="dlg-org-btn-select-user" class="ace-icon fa green select-icon icon-user"></i>
+              </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label ilabel no-padding-right"></label>
+          <div class="col-sm-9">
+            <label>
+              <input tabindex="105" id="dlg-org-chk-communication" name="dlg-org-chk-communication" type="checkbox" class="ace">
+              <span class="lbl"> $text.getText("icrawler.admin.org.communication_field")</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button id="dlg-org-btn-ok" tabindex="107" type="button" class="btn btn-primary btn-small"><i class="icon-save"></i> $text.getText("icrawler.common.button.save")</button>
+      <button id="dlg-org-btn-cancel" tabindex="108" type="button" data-dismiss="modal" class="btn btn-small"><i class="icon-remove"></i> $text.getText("icrawler.common.button.close")</button>
+    </div>
+  </div>
+  <!--/ End Config -->
+  <!-- Modal Create Node (unit/ dept/ group) -->
+  <div id="node-modal-create" class="modal container fade" tabindex="-1" data-focus-on="input:first" data-width="700">
+    <div class="modal-header">
+      <button type="button" tabindex="111" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h3><i class="icon-plus"></i> $text.getText("icrawler.common.button.create")</h3>
+    </div>
+    <div class="modal-body">
+      <div class="form-horizontal">
+        <div class="form-group">
+          <label class="col-sm-3 control-label ilabel no-padding-right" for="dlg-node-select-type">$text.getText("icrawler.admin.node.type_field") (<span class="required" />):</label>
+          <div class="col-sm-9">
+            <select id="dlg-node-select-type" tabindex="101" class="form-control">
+              <option value="unit">$text.getText("icrawler.admin.node.unit_type")</option>
+              <option value="dept" selected="selected">$text.getText("icrawler.admin.node.dept_type")</option>
+              <option value="group">$text.getText("icrawler.admin.node.group_type")</option>
+            </select>
+          </div>
+        </div>
+        <!--<div class="form-group hide" data-display='alias'>
+          <label class="col-sm-3 control-label ilabel no-padding-right" for="dlg-node-select-account">$text.getText("icrawler.admin.node.account_field") (<span class="required" />):</label>
+          <div class="col-sm-9">
+             <span id="dlg-node-select-account-container" class="input-icon input-icon-right width-100">
+               <input type="text" tabindex="106" id="dlg-node-select-account" disabled="disabled" class="input-choosen" style="width: 100%"/>
+               <i id="dlg-node-btn-select-account" class="ace-icon fa select-icon fa-user" data-toggle="tooltip" title='$text.getText("icrawler.admin.node.select_alias")'></i>
+               <i id="dlg-node-btn-select-account-cloud" class="select-icon icon-cloud" data-toggle="tooltip" title='$text.getText("icrawler.admin.node.select_on_cloud")'></i>
+              </span>
+          </div>
+        </div>-->
+        <div class="form-group" data-display='unit'>
+          <label class="col-sm-3 control-label ilabel no-padding-right" for="dlg-node-txt-code">$text.getText("icrawler.admin.org.code_office") (<span class="required" />):</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control uppercase" tabindex="101" id="dlg-node-txt-code" placeholder='$text.getText("icrawler.admin.org.code_placehoder")' maxlength="16">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label ilabel no-padding-right" for="dlg-node-txt-name" id="dlg-node-lable">$text.getText("icrawler.admin.node.name_field") (<span class="required" />):</label>
+          <div class="col-sm-9">
+            <input type="text" tabindex="102" id="dlg-node-txt-name" maxlength="128" class="form-control">
+          </div>
+        </div>
+        <div class="form-group" data-display='unit'>
+          <label class="col-sm-3 control-label ilabel no-padding-right" for="dlg-node-txt-domain">$text.getText("icrawler.admin.org.domain_field"):</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" tabindex="104" id="dlg-node-txt-domain" maxlength="64">
+          </div>
+        </div>
+        <!--<div class="form-group hide" data-display='alias'>
+          <label class="col-sm-3 control-label ilabel no-padding-right" for="dlg-node-select-rank">$text.getText("icrawler.admin.node.rank_field") (<span class="required" />):</label>
+          <div class="col-sm-9">
+            <select id="dlg-node-select-rank" tabindex="103" class="form-control">
+              <option value="administrator" selected="selected">$text.getText("icrawler.admin.alias.rank_administrator")</option>
+              <option value="org_administrator">$text.getText("icrawler.common.dialog-alias.org_administrator")</option>
+              <option value="dept_administrator">$text.getText("icrawler.admin.alias.rank_dept_administrator")</option>
+              <option value="org_leader">$text.getText("icrawler.admin.alias.rank_org_leader")</option>
+              <option value="unit_leader">$text.getText("icrawler.admin.alias.rank_unit_leader")</option>
+              <option value="leader">$text.getText("icrawler.admin.alias.rank_leader")</option>
+              <option value="specialist">$text.getText("icrawler.admin.alias.rank_specialist")</option>
+            </select>
+          </div>
+        </div>-->
+        <div class="form-group" data-display='dept_unit'>
+          <label class="col-sm-3 control-label ilabel no-padding-right" for="dlg-node-select-receiver">$text.getText("icrawler.admin.org.receiver_field"):</label>
+          <div class="col-sm-9">
+             <span id="dlg-node-select-receiver-container" class="input-icon input-icon-right width-100">
+               <input type="text" tabindex="107" id="dlg-node-select-receiver" disabled="disabled" class="form-control" />
+               <i id="dlg-node-btn-select-receiver" class="ace-icon fa select-icon fa-user"></i>
+              </span>
+          </div>
+        </div>
+        <div class="form-group" data-display='unit'>
+          <label class="col-sm-3 control-label ilabel no-padding-right"></label>
+          <div class="col-sm-9">
+            <label>
+              <input tabindex="105" id="dlg-node-txt-chk-communication" name="dlg-org-chk-communication" type="checkbox" class="ace">
+              <span class="lbl"> $text.getText("icrawler.admin.org.communication_field")</span>
+            </label>
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom: 5px;">
+          <label class="col-sm-3 control-label ilabel no-padding-right" for="dlg-node-txt-order">$text.getText("icrawler.admin.node.order_field") :</label>
+          <div class="col-sm-9">
+            <input type="text" class="mask-interger form-control" tabindex="108" id="dlg-node-txt-order" maxlength="3">
+          </div>
+        </div>
+        <!--<div class="form-group" data-display='alias'>
+          <div class="col-sm-9">
+            <label style="padding-left: 25px;"><input type="checkbox" id="dlg-node-chk-watch-role" value="" class="form-control"><span class="lbl"> $text.getText("Cho phép theo dõi"):</span></label>
+          </div>
+        </div>-->
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button id="dlg-node-btn-ok" tabindex="109" type="button" class="btn btn-primary btn-small"><i class="icon-save"></i> $text.getText("icrawler.common.button.save")</button>
+      <button id="dlg-node-btn-cancel" tabindex="110" type="button" data-dismiss="modal" class="btn btn-small"><i class="icon-remove"></i> $text.getText("icrawler.common.button.close")</button>
+    </div>
+  </div><!--/ End Create -->
+
+  <!-- Begin cap nhat thuoc tinh  don vi-->
+  <div id="node-modal-unit-update" class="modal fade" tabindex="-1" data-focus-on="input:first" data-width="700">
+    <div class="modal-header">
+      <button type="button" tabindex="111" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h3><i class="icon-pencil"></i> $text.getText("Cập nhật đơn vị")</h3>
+    </div>
+    <div class="modal-body">
+      <div class="form-horizontal">
+        <div class="form-group">
+          <label class="col-sm-3 control-label ilabel no-padding-right" for="modal-unit-update-txt-order">$text.getText("icrawler.admin.node.order_field") :</label>
+          <div class="col-sm-9">
+            <input type="text" class="mask-interger form-control" tabindex="108" id="modal-unit-update-txt-order" maxlength="3">
+          </div>
+        </div>
+        <!--<div class="form-group" data-display='dept'>
+          <div class="col-sm-9">
+            <label style="padding-left: 25px;"><input type="checkbox" id="modal-unit-update-chk-compose" value="" checked="checked"><span class="lbl"> $text.getText("Hiển thị trong soạn thảo văn bản")</span></label>
+          </div>
+        </div>-->
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button id="modal-unit-update-btn-ok" tabindex="109" type="button" class="btn btn-primary btn-small"><i class="icon-save"></i> $text.getText("icrawler.common.button.save")</button>
+      <button id="modal-unit-update-btn-cancel" tabindex="110" type="button" data-dismiss="modal" class="btn btn-small"><i class="icon-remove"></i> $text.getText("icrawler.common.button.close")</button>
+    </div>
+  </div>
+</div>

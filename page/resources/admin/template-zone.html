@@ -1,0 +1,61 @@
+#zone({"inherit":true})
+  #scriptBundle("template-script")
+    iNet.ns("iNet.resources","iNet.resources.crawler","iNet.resources.crawler.admin","iNet.resources.crawler.admin.template");
+
+    if (iNet.resources.crawler.admin.template) {
+      iNet.apply(iNet.resources.crawler.admin.template, {
+        title:'$text.getText("ikepler.admin.template.title")',
+        type:'$text.getText("ikepler.admin.template.type")',
+        module_edoc:'$text.getText("ikepler.admin.template.module_edoc")',
+        module_task:'$text.getText("ikepler.admin.template.module_task")',
+        module_steering: '$text.getText("ikepler.admin.template.module_steering")',
+        module_submit:'$text.getText("ikepler.admin.template.module_submit")',
+        type_rp_ed_in:'$text.getText("ikepler.admin.template.type_rp_edoc_in")',
+        type_rp_ed_out:'$text.getText("ikepler.admin.template.type_rp_edoc_out")',
+        type_rp_specialist: '$text.getText("ikepler.admin.template.type_rp_specialist")',
+        type_rp_process_ed_situation:'$text.getText("ikepler.admin.template.type_rp_process_ed_situation")',
+        type_rp_oversee_department:'$text.getText("ikepler.admin.template.type_rp_oversee_department")',
+        type_rp_publish_department:'$text.getText("ikepler.admin.template.type_rp_publish_department")',
+        type_rp_receive_specialist:'$text.getText("ikepler.admin.template.type_rp_receive_specialist")',
+        type_rp_meeting:'$text.getText("ikepler.admin.template.type_rp_meeting")',
+        type_rp_ed_lated:'$text.getText("ikepler.admin.template.type_rp_edoc_lated")',
+        type_rp_ed_situation:'$text.getText("ikepler.admin.template.type_rp_edoc_situation")',
+        type_rp_ed_situation_statistic:'$text.getText("ikepler.admin.template.type_rp_edoc_situation_statistic")',
+        
+        type_rp_task_process:'$text.getText("ikepler.admin.template.type_rp_task_process")',
+        type_rp_submit_task:'$text.getText("ikepler.admin.template.type_rp_submit_task")',
+        
+        confirm_del:'$text.getText("ikepler.admin.template.confirm_del")',
+        module:'$text.getText("ikepler.admin.template.module")',
+        description: '$text.getText("ikepler.admin.template.description")',
+        template_not_blank:'$text.getText("ikepler.admin.template.template_not_blank")',
+        template_is_required:'$text.getText("ikepler.admin.template.template_is_required")',
+        template_size_is_required:'$text.getText("ikepler.admin.template.template_size_is_required")',
+        module_not_blank:'$text.getText("ikepler.admin.template.module_not_blank")',
+        upload_template:'$text.getText("ikepler.admin.template.upload_template")',
+        template_update_success:'$text.getText("ikepler.admin.template.template_update_success")',
+        template_create_success:'$text.getText("ikepler.admin.template.template_create_success")',
+        template_save_error:'$text.getText("ikepler.admin.template.template_save_error")',
+        name:'$text.getText("ikepler.admin.template.name")',
+        disable:'$text.getText("ikepler.admin.template.disable")',
+        disable_content:'$text.getText("ikepler.admin.template.disable_content")',
+        name_not_empty:'$text.getText("ikepler.admin.template.name_not_empty")',
+        cell_not_empty:'$text.getText("ikepler.admin.template.cell_not_empty")',
+        template:'$text.getText("ikepler.admin.template.template")',
+        new_template_save_error :'$text.getText("ikepler.admin.template.new_template_save_error")',
+        new_template_save_sucsess:'$text.getText("ikepler.admin.template.new_template_save_sucsess")',
+        new_template_update_error:'$text.getText("ikepler.admin.template.new_template_update_error")',
+        new_template_update_sucsess:'$text.getText("ikepler.admin.template.new_template_update_sucsess")',
+        load_template_error:'$text.getText("ikepler.admin.template.load_template_error")',
+        subject:'$text.getText("ikepler.admin.template.subject")',
+        meeting_date:'$text.getText("ikepler.admin.template.meeting_date")',
+        problem:'$text.getText("ikepler.admin.template.problem")',
+        error:'$text.getText("ikepler.admin.template.error")',
+        insert_row:'$text.getText("ikepler.admin.template.insert_row")'
+      });
+    }
+    
+  #end
+#end
+
+

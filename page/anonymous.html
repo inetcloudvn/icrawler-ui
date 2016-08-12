@@ -1,0 +1,80 @@
+#html({"lang":"vi","dir":"ltr", "xmlns":"http://www.w3.org/1999/xhtml","secure":"$user", "inherit":true})
+#keywords({"title":'iCrawler - $text.getText("icrawler.steering.menu.homepage")'})
+#meta({ "title":"iCloud Platform","viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"})
+#theme("/common/css/inet-core-3.0.min")
+#theme("/common/css/font-awesome")
+#script("/js/common/inet/lib/inet-core.min.js")
+#script("/js/kepler/inet/lib/icrawler-common-verify.min.js")
+
+#hasRole("$sub_admin")
+#set($sub_adm = true)
+#end
+#hasRole("$ikl.adm.node")
+#set($adm_node = true)
+#end
+#hasRole("$ikl.adm.alias")
+#set($adm_alias = true)
+#end
+#hasRole("$ikl.adm.config")
+#set($adm_config = true)
+#end
+#hasRole("$ikl.adm.gateway")
+#set($adm_gateway = true)
+#end
+#hasRole("$ikl.adm.dict")
+#set($adm_dict = true)
+#end
+#set($admin = $sub_adm || $adm_node || $adm_alias || $adm_config || $adm_gateway || $adm_dict)
+
+#dataservice("ikl_node_findbyusercodeservice")
+#set($users = $ikl_node_findbyusercodeservice)
+
+#set($menuIndex = 0)
+#foreach($item in $users.elements)
+    #set($menuIndex = $menuIndex+1)
+#end
+#xscript()
+    iNet.prefix="$ctx.site.prefix";
+    iNet.firmPrefix="$ctx.firmPrefix";
+    iNet.extension = "$ctx.extension()";
+    iNet.path = "$ctx.path()";
+    if($menuIndex>0){
+    window.location.href="$ctx.page('/kepler/page/index')";
+    }
+#end
+
+<style type="text/css">
+    body {
+        background-color: gray;
+        font-family: Arial, Verdana, Geneva, Lucida, 'lucida grande', helvetica, sans-serif;
+        overflow: hidden;
+    }
+</style>
+<div class="container">
+    <div id="account-verify" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div  class="panel panel-info" >
+            <div class="panel-heading">
+                <div class="panel-title"><i class="icon-bullhorn"></i> $text.getText("icrawler.verify.title")</div>
+            </div>
+            <div class="panel-body" >
+                <div id="account-verify-form" class="form-horizontal">
+                    <div id="account-verify-message" class="alert alert-warning" style="padding-bottom: 30px;padding: 5px;">
+                        $text.getText("icrawler.verify.msg_first") <br />
+                        $text.getText("icrawler.verify.msg_two")
+                    </div>
+                    <div style="margin-top:10px" class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-sm-9 controls">
+                            <button id="account-verify-btn-retry" type="button" class="btn btn-success"><i class="icon-location-arrow"></i> $text.getText("icrawler.verify.retry")</button>
+                            #if($admin)
+                            <button id="account-verify-btn-admin" type="button" class="btn btn-info"><i class="icon-gear"></i> $text.getText("icrawler.verify.admin")</button>
+                            #end
+                            <button id="account-verify-btn-close" type="button" class="btn btn-danger"><i class="icon-signout"></i> $text.getText("icrawler.verify.close")</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+#end

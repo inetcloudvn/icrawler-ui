@@ -1,0 +1,9 @@
+.logo {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background: url("../../images/ikepler.common/logo.png") !important;
+}
+.badge-parent {
+    right: 30px !important;
+}

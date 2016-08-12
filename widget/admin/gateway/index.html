@@ -1,0 +1,84 @@
+#script("/js/icrawler/inet/lib/icrawler-admin-gateway.min.js")
+<div id="wg-toolbar" class="navbar-fixed-top">
+    <button id="gateway-btn-save" class="btn btn-primary btn-small">
+        <i class="icon-save"></i> $text.getText("icrawler.common.button.save")
+    </button>
+    <button id="gateway-btn-delete" style="display: none" class="btn btn-danger btn-small">
+        <i class="icon-trash"></i> $text.getText("icrawler.common.button.delete")
+    </button>
+</div>
+<div id="wg-content">
+    <div class="container-fluid">
+        <div class="">
+            <div id="gateway-before-test" class="row">
+                <div class="col-sm-12">
+                    <div class="widget-box">
+                        <div class="widget-header">
+                            <h4 class="widget-title"><i class="icon-cog"></i> $text.getText("icrawler.admin.gateway.title")</h4>
+                        </div>
+                        <div class="widget-body">
+                            <div class="widget-main no-padding form-horizontal">
+                                <form id="gateway-wg-frm">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 ilabel control-label" for="gateway-txt-type" >$text.getText("icrawler.admin.gateway.type") (<span class="required" />):</label>
+                                            <div class="col-sm-10">
+                                                <select id="gateway-txt-type" class="form-control">
+                                                    <option value="CAMEL" selected="selected">CAMEL</option>
+                                                    <option value="IMERCURY">IMERCURY</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 ilabel control-label" for="gateway-txt-address" >$text.getText("icrawler.admin.gateway.address") (<span class="required" />):</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="gateway-txt-address">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 ilabel control-label" for="gateway-txt-access-key">$text.getText("icrawler.admin.gateway.access_key"):</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="gateway-txt-access-key">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 ilabel control-label" for="gateway-txt-secret-key">$text.getText("icrawler.admin.gateway.secret_key"):</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="gateway-txt-secret-key">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 ilabel control-label" for="gateway-txt-app-access">$text.getText("icrawler.admin.gateway.app"):</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="gateway-txt-app-access">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="col-sm-2 ilabel control-label">$text.getText("icrawler.admin.gateway.active")</label>
+                                            <div class="col-sm-10" style="padding-left: 0px;">
+                                                <label>
+                                                    <input id="gateway-txt-active" name="switch-active" checked="checked" class="ace ace-switch ace-switch-5" type="checkbox">
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <!--<div class="form-actions center">
+                                        <button id="gateway-btn-active" type="button" class="btn btn-sm btn-success">
+                                            <i class="ace-icon fa icon-ok-sign icon-on-right bigger-110"></i>
+                                            $text.getText("icrawler.common.button.test")
+                                        </button>
+                                    </div>-->
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

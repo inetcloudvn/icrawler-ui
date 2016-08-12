@@ -1,0 +1,40 @@
+#script("/js/common/jquery/plugins/jquery.maskedinput.min.js")
+#script("/js/common/inet/lib/grid-2.0.min.js")
+#script("/js/icrawler/inet/lib/icrawler-admin-dictionary.min.js")
+
+<div id="wg-toolbar" class="navbar-fixed-top">
+    <button id="icrawler-dict-btn-create" class="btn btn-primary btn-small">
+        <i class="icon-plus"></i> $text.getText("icrawler.common.button.create")
+    </button>
+    <button id="icrawler-dict-btn-delete" class="btn btn-danger btn-small hide" disabled="disabled">
+        <i class="icon-trash"></i> $text.getText("icrawler.common.button.delete")
+    </button>
+</div>
+<div id="wg-content" class="wg-content">
+    <form class="form-horizontal">
+        <div class="form-group marg-r-0 marg-l-0">
+            <label for="icrawler-dict-select-type" class="col-sm-1 control-label">$text.getText("icrawler.admin.dict.type_field"):</label>
+            <div class="col-sm-5">
+                <select id="icrawler-dict-select-type" class="form-control">
+                    <option value="incoming" selected="selected">$text.getText("icrawler.admin.dict.incoming_type")</option>
+                    <option value="outgoing">$text.getText("icrawler.admin.dict.outgoing_type")</option>
+                </select>
+            </div>
+            <label for="icrawler-dict-select-key" class="col-sm-1 control-label" >$text.getText("icrawler.admin.dict.key_field"):</label>
+            <div class="col-sm-5">
+                <select id="icrawler-dict-select-key" class="form-control"></select>
+            </div>
+        </div>
+    </form>
+    <div id="icrawler-dictionary-warning" class="hide">
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">
+                <i class="icon-remove"></i>
+            </button>
+            <strong>Ghi chú!</strong>
+            Nếu không nhập <b>Mã cơ quan</b> thì bạn sẽ không theo dõi được tình hình xử lý của văn bản liên thông của cơ quan đó.
+            <br>
+        </div>
+    </div>
+    <div id="icrawler-dictionary-grid-id"></div>
+</div>

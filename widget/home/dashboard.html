@@ -1,0 +1,481 @@
+#theme("/common/css/listview")
+#theme("/icrawler/css/angle-app")
+#theme("/icrawler/css/dashboard")
+#script("/js/common/jquery/plugins/jquery.slimscroll.min.js")
+#script("/js/icrawler/jquery/plugins/jquery.flot.min.js")
+#script("/js/icrawler/jquery/plugins/jquery.flot.pie.min.js")
+#script("/js/icrawler/jquery/plugins/jquery.flot.resize.min.js")
+#script("/js/icrawler/jquery/charts/jquery.chart.min.js")
+#script("/js/common/inet/lib/listview.min.js")
+#script("/js/icrawler/inet/lib/icrawler-steerwork-common.min.js")
+#script("/js/icrawler/inet/lib/icrawler-steerwork-dashboard.min.js")
+
+<style type="text/css">
+    .badge {
+        padding: 1px 7px !important;
+    }
+</style>
+
+<div id="icrawler-dashboard-widget" class="dashboard">
+    <div id="wg-toolbar" class="navbar-fixed-top" style="text-align: right;">
+        <div class="inline dropdown-hover">
+            <button id="dashboard-btn-type" class="btn btn-minier btn-primary">
+                <span><i class="icon-user"></i> Chỉ mình tôi</span>
+                <i class="ace-icon fa fa-angle-down icon-on-right bigger-110"></i>
+            </button>
+
+            <ul class="dropdown-menu dropdown-menu-right dropdown-125 dropdown-lighter dropdown-close dropdown-caret">
+                <li>
+                    <a id="dashboard-btn-type-alias" href="javascript:;" class="blue">
+                        <i class="icon-user"></i>
+                        Chỉ mình tôi
+                    </a>
+                </li>
+
+                <li>
+                    <a id="dashboard-btn-type-unit" href="javascript:;">
+                        <i class="icon-building"></i>
+                        <span>Trong phòng</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="wg-content" style="padding-top: 34px;">
+        <div class="hr col-sm-12" style="border: none"></div>
+        <div class="row col-lg-12 col-sm-12">
+            <div class="col-lg-4 col-sm-4">
+                <!-- START widget-->
+                <div class="panel widget bg-primary">
+                    <div class="row row-table">
+                        <div class="col-xs-4 text-center bg-primary-dark pv-lg">
+                            <em class="ace-icon fa fa-tasks fa-3x"></em>
+                        </div>
+                        <div class="col-xs-8 pv-lg">
+                            <div class="h2 mt0" id="dashboard-statistics-summary-countExecutor">0</div>
+                            <div class="text-uppercase">Nhiệm vụ đang xử lý</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-4">
+                <!-- START widget-->
+                <div class="panel widget bg-green">
+                    <div class="row row-table">
+                        <div class="col-xs-4 text-center bg-green-dark pv-lg">
+                            <em class="ace-icon fa fa-users fa-3x"></em>
+                        </div>
+                        <div class="col-xs-8 pv-lg">
+                            <div class="h2 mt0" id="dashboard-statistics-summary-countWatcher">0</div>
+                            <div class="text-uppercase">Nhiệm vụ đang phối hợp</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-4">
+                <!-- START widget-->
+                <div class="panel widget bg-warning">
+                    <div class="row row-table">
+                        <div class="col-xs-4 text-center bg-warning-dark pv-lg">
+                            <em class="ace-icon fa fa-eye fa-3x"></em>
+                        </div>
+                        <div class="col-xs-8 pv-lg">
+                            <div class="h2 mt0" id="dashboard-statistics-summary-countCoordinator">0
+
+                            </div>
+                            <div class="text-uppercase">Nhiệm vụ đang theo dõi</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="col-lg-3 col-sm-3">
+                &lt;!&ndash; START date widget&ndash;&gt;
+                <div class="panel widget">
+                    <div class="row row-table">
+                        <div class="col-xs-4 text-center bg-green pv-lg">
+                            &lt;!&ndash; See formats: https://docs.angularjs.org/api/ng/filter/date&ndash;&gt;
+                            <div data-now="" data-format="MMMM" class="text-sm">August</div>
+                            <br>
+                            <div data-now="" data-format="D" class="h2 mt0">5</div>
+                        </div>
+                        <div class="col-xs-8 pv-lg">
+                            <div data-now="" data-format="dddd" class="text-uppercase">Friday</div>
+                            <br>
+                            <div data-now="" data-format="h:mm" class="h2 mt0">9:22</div>
+                            <div data-now="" data-format="a" class="text-muted text-sm">am</div>
+                        </div>
+                    </div>
+                </div>
+                &lt;!&ndash; END date widget    &ndash;&gt;
+            </div>-->
+        </div>
+        <!--BEGIN THONG KE TONG VAN BAN-->
+        <div class="row" id="dashboard-statistics-inunit-container">
+            <div class="hr hr-dotted col-sm-12"></div>
+            <div id="dashboard-statistics-docstatistics-container" class="col-sm-6">
+                <div class="widget-box">
+                    <div class="widget-header widget-header-flat widget-header-small">
+                        <h5 class="widget-title">
+                            <i class="ace-icon fa fa-signal"></i>
+                            <span id="dashboard-statistics-docstatistics-title">Tổng văn bản trong năm 2016</span>
+
+                        </h5>
+
+                    </div>
+                    <div class="widget-body">
+                        <div class="widget-main">
+                            <!-- CHART-->
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-6">
+                                    <div id="dashboard-statistics-unit-mychart" class="pie-chart" style="width:350px; height:200px;"></div>
+                                    <!--<canvas id="dashboard-statistics-unit-mychart" width="300" height="300"></canvas>-->
+                                </div>
+                                <div class="col-sm-3"></div>
+
+                            </div>
+                            <div class="row">
+                                <div class="infobox-container">
+                                    <div class="infobox infobox-green infobox-small infobox-dark">
+                                        <div class="infobox-icon">
+                                            <i class="ace-icon fa icon-time"></i>
+                                        </div>
+
+                                        <div class="infobox-data" style="max-width: 85px;">
+                                            <div class="infobox-content infobox-label">TRONG TUẦN</div>
+                                            <div class="infobox-data-number" id="dashboard-statistics-unit-week" style="font-weight: bold">0</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="infobox infobox-blue infobox-small infobox-dark">
+                                        <div class="infobox-icon">
+                                            <i class="ace-icon fa icon-calendar-empty"></i>
+                                        </div>
+
+                                        <div class="infobox-data" style="max-width: 85px;">
+                                            <div class="infobox-content infobox-label">TRONG THÁNG</div>
+                                            <div class="infobox-data-number" id="dashboard-statistics-unit-month" style="font-weight: bold">0</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="infobox infobox-grey infobox-small infobox-dark">
+                                        <div class="infobox-icon">
+                                            <i class="ace-icon fa icon-calendar"></i>
+                                        </div>
+
+                                        <div class="infobox-data" style="max-width: 85px;">
+                                            <div class="infobox-content infobox-label">TRONG NĂM</div>
+                                            <div class="infobox-data-number" id="dashboard-statistics-unit-year" style="font-weight: bold">0</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- BEGIN DANH SACH DON VI XU LY-->
+            <div id="dashboard-statistics-assignextunit-container" class="col-sm-6">
+                <div class="widget-box">
+                    <div class="widget-header widget-header-flat widget-header-small">
+                        <h5 class="widget-title">
+                            <i class="ace-icon fa fa-list"></i>
+                            Nhiệm vụ đã phân công cho đơn vị
+                        </h5>
+
+                    </div>
+                    <div class="widget-body">
+                        <div class="widget-main" style="min-height: 277px;">
+                            <!-- LIST-->
+                            <div>
+                                <select id="dashboard-statistics-assignextunit-year">
+                                    <option value="" selected="selected">Tất cả</option>
+                                </select>
+                                <select id="dashboard-statistics-assignextunit-month">
+                                    <option value="0" selected="selected">Tháng 1</option>
+                                    <option value="1">Tháng 2</option>
+                                    <option value="2">Tháng 3</option>
+                                    <option value="3">Tháng 4</option>
+                                    <option value="4">Tháng 5</option>
+                                    <option value="5">Tháng 6</option>
+                                    <option value="6">Tháng 7</option>
+                                    <option value="7">Tháng 8</option>
+                                    <option value="8">Tháng 9</option>
+                                    <option value="9">Tháng 10</option>
+                                    <option value="10">Tháng 11</option>
+                                    <option value="11">Tháng 12</option>
+                                </select>
+                            </div>
+                            <div style="height: 210px;">
+                                <div id="dashboard-statistics-assignextunit-content-list" style="margin-top: 10px;overflow: hidden;position:relative;padding: 5px;" >
+                                    <ul id="dashboard-statistics-assignextunit-tasks" class="item-list ui-sortable">
+                                        <!--<div class="pull-right" style="width: 80px;margin-top: 8px;">
+                                            <div class="progress progress-mini">
+                                                <div class="progress-bar progress-danger" style="width: 35%;"></div>
+                                            </div>
+                                            <div class="progress progress-mini" style="margin-top: 2px;">
+                                                <div class="progress-bar progress-bar-danger" style="width: 10%;"></div>
+                                            </div>
+                                        </div>-->
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END DANH SACH DON VI XU LY-->
+        </div>
+        <!--END THONG KE TONG VAN BAN-->
+        <div class="hr hr-dotted col-sm-12"></div>
+        <!--THONG KE TINH HINH XU LY NHIEM VU-->
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="widget-box transparent">
+                    <div class="widget-header widget-header-flat widget-header-small">
+                        <h5 class="widget-title">
+                            <i class="ace-icon fa fa-tachometer"></i>
+                            Thống kê nhiệm vụ, công việc
+                        </h5>
+                        <div class="widget-toolbar no-border" style="padding: 2px;">
+                            <div id="dashboard-btn-period" class="btn-group" role="group" aria-label="...">
+                                <button type="button" data-action="change" data-type="week" class="btn btn-default">Tuần</button>
+                                <button type="button" data-action="change" data-type="month" class="btn btn-default btn-primary" style="border-right: 0px;border-left: 0px;">Tháng</button>
+                                <button type="button" data-action="change" data-type="year" class="btn btn-default">Năm</button>
+                            </div>
+                            <!--<div class="inline dropdown-hover">
+                                <button id="dashboard-btn-type" class="btn btn-minier">
+                                    <span><i class="icon-user"></i> Chỉ mình tôi</span>
+                                    <i class="ace-icon fa fa-angle-down icon-on-right bigger-110"></i>
+                                </button>
+
+                                <ul class="dropdown-menu dropdown-menu-right dropdown-125 dropdown-lighter dropdown-close dropdown-caret">
+                                    <li>
+                                        <a id="dashboard-btn-type-alias" href="javascript:;" class="blue">
+                                            <i class="icon-user"></i>
+                                            Chỉ mình tôi
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a id="dashboard-btn-type-unit" href="javascript:;">
+                                            <i class="icon-building"></i>
+                                            <span>Trong phòng</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>-->
+                        </div>
+                    </div>
+
+                    <div class="widget-body" style="margin-top:30px;">
+                        <div class="widget-main">
+                            <div id="dashboard-statistics-container" class="infobox-container">
+                                <div class="infobox infobox-orange2">
+                                    <div class="infobox-icon">
+                                        <i class="ace-icon fa icon-time"></i>
+                                    </div>
+
+                                    <div class="infobox-data">
+                                        <span class="infobox-data-number" id="dashboard-statistics-assigned-total">0</span>
+                                        <div class="infobox-content">Đợi xử lý</div>
+                                    </div>
+
+                                    <!--<div class="stat stat-success">8%</div>-->
+                                </div>
+
+                                <div class="infobox infobox-red">
+                                    <div class="infobox-icon">
+                                        <i class="ace-icon fa icon-exclamation-sign"></i>
+                                    </div>
+
+                                    <div class="infobox-data">
+                                        <span class="infobox-data-number" id="dashboard-statistics-completed-expire">0</span>
+                                        <div class="infobox-content">Hoàn thành quá hạn</div>
+                                    </div>
+
+                                    <!--<div class="badge badge-success">
+                                        +32%
+                                        <i class="ace-icon fa fa-arrow-up"></i>
+                                    </div>-->
+                                </div>
+
+                                <div class="infobox infobox-blue">
+                                    <div class="infobox-icon">
+                                        <i class="ace-icon fa icon-random"></i>
+                                    </div>
+
+                                    <div class="infobox-data">
+                                        <span class="infobox-data-number" id="dashboard-statistics-processing-total">0</span>
+                                        <div class="infobox-content">Đang xử lý</div>
+                                    </div>
+                                    <div class="badge badge-important" id="dashboard-statistics-processing-expire"></div>
+                                    <!--<div class="stat stat-important">4%</div>-->
+                                </div>
+
+                                <div class="infobox infobox-green">
+                                    <div class="infobox-icon">
+                                        <i class="ace-icon fa icon-ok-circle"></i>
+                                    </div>
+
+                                    <div class="infobox-data">
+                                        <!--<span class="infobox-text">Hoàn thành</span>-->
+                                        <span class="infobox-data-number" id="dashboard-statistics-completed-ontime">0</span>
+
+                                        <div class="infobox-content">Hoàn thành đúng hạn</div>
+                                    </div>
+                                    <!--<div class="badge badge-success" id=""></div>-->
+                                    <!--<div class="badge badge-important" id="" style="top:33px;"></div>-->
+
+                                </div>
+
+                                <div class="infobox infobox-pink">
+                                    <div class="infobox-icon">
+                                        <i class="ace-icon fa icon-ok-circle"></i>
+                                    </div>
+
+                                    <div class="infobox-data">
+                                        <span class="infobox-data-number" id="dashboard-statistics-resolved-total">0</span>
+                                        <div class="infobox-content">Đã xử lý</div>
+                                    </div>
+                                </div>
+
+                                <div class="infobox infobox-blue2">
+                                    <div class="infobox-icon">
+                                        <i class="ace-icon fa icon-paper-clip"></i>
+                                    </div>
+
+                                    <div class="infobox-data">
+                                        <span class="infobox-data-number" id="dashboard-statistics-completed-requiredAttResult">0</span>
+                                        <div class="infobox-content">Kết quả có đính kèm</div>
+                                    </div>
+                                    <!--<div class="badge badge-success" id="dashboard-statistics-resolved-ontime"></div>
+                                    <div class="badge badge-important" id="dashboard-statistics-resolved-expire" style="top:33px;"></div>-->
+                                </div>
+
+                                <div class="space-6"></div>
+
+                                <div class="infobox infobox-blue infobox infobox-dark">
+                                    <div class="infobox-data">
+                                        <div class="infobox-content">Chưa hoàn thành</div>
+                                        <div class="infobox-data-number" id="dashboard-statistics-processing-all">0</div>
+                                    </div>
+                                </div>
+                                <div class="infobox infobox-green infobox infobox-dark">
+                                    <div class="infobox-data">
+                                        <div class="infobox-content">Hoàn thành</div>
+                                        <div class="infobox-data-number" id="dashboard-statistics-completed-total">0</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- /.widget-main -->
+                    </div><!-- /.widget-body -->
+                </div><!-- /.widget-box -->
+            </div>
+            <div id="dashboard-statistics-bytime-container" class="col-sm-6">
+                <div class="widget-box transparent">
+                    <div class="widget-header widget-header-flat widget-header-small">
+                        <h5 class="widget-title">
+                            <i class="ace-icon fa fa-signal"></i>
+                            Thống kê tình hình xử lý
+                        </h5>
+                        <div class="widget-toolbar no-border" style="padding: 2px;">
+                            <input type="text" id="dashboard-statistics-bytime-amount" value="6" style="width: 50px; margin-bottom: 0px !important;margin-right: 5px;"/>
+                            <div id="dashboard-statistics-bytime-btn-period" class="btn-group" role="group" aria-label="...">
+                                <button type="button" data-action="change" data-type="week" class="btn btn-default">Tuần</button>
+                                <button type="button" data-action="change" data-type="month" class="btn btn-default btn-primary" style="border-right: 0px;border-left: 0px;">Tháng</button>
+                                <button type="button" data-action="change" data-type="year" class="btn btn-default">Năm</button>
+                            </div>
+                            <!--<div class="inline dropdown-hover">
+                                <button id="dashboard-statistics-bytime-btn-type" class="btn btn-minier">
+                                    <span><i class="icon-user"></i> Chỉ mình tôi</span>
+                                    <i class="ace-icon fa fa-angle-down icon-on-right bigger-110"></i>
+                                </button>
+
+                                <ul class="dropdown-menu dropdown-menu-right dropdown-125 dropdown-lighter dropdown-close dropdown-caret">
+                                    <li>
+                                        <a id="dashboard-statistics-bytime-btn-type-alias" href="javascript:;" class="blue">
+                                            <i class="icon-user"></i>
+                                            Chỉ mình tôi
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a id="dashboard-statistics-bytime-btn-type-unit" href="javascript:;">
+                                            <i class="icon-building"></i>
+                                            <span>Trong phòng</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>-->
+                        </div>
+                    </div>
+                    <div class="widget-body">
+                        <div class="widget-main">
+                            <!-- CHART-->
+                            <canvas id="dashboard-statistics-bytime-mychart" width="400" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="hr hr32 hr-dotted col-sm-12"></div>-->
+        <!--THONG KE BY TIME-->
+
+        <!--<div class="">
+            <div id="dashboard-statistics-tasksexpire-container" class="col-sm-12">
+                <div class="widget-box transparent">
+                    <div class="widget-header widget-header-flat widget-header-small">
+                        <h5 class="widget-title">
+                            <i class="ace-icon fa icon-list"></i>
+                            Văn bản quá hạn
+                        </h5>
+                        <div class="widget-toolbar no-border" style="padding: 2px;">
+                            <label class="control-label lbl-bold ilabel" for="dashboard-statistics-tasksexpire-checkPoint">Tính đến ngày: </label>
+                            <input type="text" id="dashboard-statistics-tasksexpire-checkPoint" style="width: 220px; margin-bottom: 0px !important;margin-right: 5px;"/>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+                        <div class="widget-main">
+                            &lt;!&ndash; Grid&ndash;&gt;
+                            <table class="table datagrid grid-header hidden-480">
+                                <thead>
+                                <tr>
+                                    <th style="border-bottom: 0px !important;">
+                                        <div class="col-xs-12 col-md-12 row-fluid nopadding">
+                                            <div id="dashboard-statistics-tasksexpire-paging" style="float: right !important;font-weight: normal;"></div>
+                                        </div>
+                                    </th>
+                                </tr>
+                                </thead>
+                            </table>
+                            <table id="dashboard-statistics-tasksexpire-table" class="table table-bordered dataTable" style="margin-top: 0px;">
+                                <thead>
+                                <tr>
+                                    <th style="width: 25px;">#</th>
+                                    <th style="text-align:center;border-bottom: 0px;">$text.getText("Trích yếu")</th>
+                                    <th style="text-align:center; width: 200px;border-bottom: 0px;">$text.getText("Nội dung công việc")</th>
+                                    <th style="text-align:center; width: 150px;border-bottom: 0px;">$text.getText("Xử lý chính")</th>
+                                    <th style="text-align:center;border-bottom: 0px;">$text.getText("Ngày giao")</th>
+                                    <th style="text-align:center;border-bottom: 0px; width: 85px;">$text.getText("Hạn xử lý")</th>
+                                    <th style="text-align:center;border-bottom: 0px; width: 100px;">$text.getText("Trạng thái")</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td colspan="7"><i>$text.getText("Không có dữ liệu để hiển thị")</i></td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+    </div>
+</div>

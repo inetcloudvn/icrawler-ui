@@ -1,0 +1,29 @@
+#script("/js/icrawler/inet/lib/icrawler-role-menu.min.js")
+#dataservice("icwl_node_findbyusercodeservice")
+#set($users = $ikl_node_findbyusercodeservice)
+#set($menuIndex = 0)
+<div id="switch-user-menu" class="hide" data-header-type="menu">
+    <li>
+    <li class="dropdown-submenu"><a href="javascript:;"> <i class="icon-cog"></i> $text.getText("icrawler.menu.role")
+    </a>
+        <ul id="header-switch-user" class="dropdown-menu">
+            #foreach($item in $users.elements)
+            #set($menuIndex = $menuIndex+1)
+            <li>#if($item.select)
+                <a href="javascript:;" data-selected="true" data-code="$item.acode" data-name="$item.aname" data-rank="$item.rank" data-dept-code="$item.deptCode" data-unit-name="$item.unitName" data-unit-code="$item.unitCode">
+                    <i class="icon-check"></i> $item.aname</a>
+                #else
+                <a href="javascript:;" data-code="$item.acode" data-name="$item.aname" data-rank="$item.rank" data-dept-code="$item.deptCode" data-unit-name="$item.unitName" data-unit-code="$item.unitCode">
+                    <i class="icon-check-empty"></i> $item.aname</a>
+                #end
+            </li>
+            #end
+        </ul>
+    </li>
+    </li>
+</div>
+#xscript()
+if($menuIndex<1){
+window.location.href="$ctx.page('/icrawler/page/anonymous')";
+}
+#end
